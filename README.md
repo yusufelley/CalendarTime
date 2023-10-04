@@ -1,2 +1,2 @@
 # CalendarTime
-CS520 Project by Aeyan, Mounir, Sidd, Yusuf
+CS520 Project by Aeyan, Mounir, Siddharth, Yusuf
