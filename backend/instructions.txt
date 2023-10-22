@@ -1,0 +1,7 @@
+MONGO_URI=mongodb+srv://kananemounir:16dv8L1dZgR7R5os@calendartime.iez3e6u.mongodb.net/
+
+install mongoose
+
+mongoose.connect(MONGO_URI).then( () => console.log("Connected")).catch((error) => console.log(error))
+
+
