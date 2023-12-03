@@ -1,8 +1,12 @@
 import express from "express";
 import { createLogger, transports, format } from "winston";
+import connectDB from "./database.js";
 
 const app = express();
 export const port = process.env.PORT || 3001;
+
+// Connect to database
+connectDB();
 
 const logFormat = format.printf(({ timestamp, level, message }) => {
   return `${timestamp} [${level}]: ${message}`;
