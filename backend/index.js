@@ -1,12 +1,17 @@
 import express from "express";
 import { createLogger, transports, format } from "winston";
 import connectDB from "./database.js";
+import dotenv from "dotenv";
 
 const app = express();
-export const port = process.env.PORT || 3001;
+
+// Initialize environment variables
+dotenv.config();
+
+export const PORT = process.env.PORT || 3001;
 
 // Connect to database
-connectDB();
+connectDB(process.env.MONGODB_URI);
 
 const logFormat = format.printf(({ timestamp, level, message }) => {
   return `${timestamp} [${level}]: ${message}`;
@@ -37,6 +42,6 @@ app.get("*", (req, res) => {
   res.status(404).send("Route does not exist");
 });
 
-app.listen(port, () => {
-  logger.info(`Server Started on Port ${port}`);
+app.listen(PORT, () => {
+  logger.info(`Server Started on Port ${PORT}`);
 });
