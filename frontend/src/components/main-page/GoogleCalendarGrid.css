@@ -1,0 +1,70 @@
+.weekly-calendar-grid {
+  margin: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.hour-label {
+  background-color: #e6f7ff;
+}
+
+tr:nth-child(odd) td:nth-child(odd) {
+  background-color: #f9f9f9; /* White background for odd cells in odd columns */
+}
+
+tr:nth-child(even) td:nth-child(even) {
+  background-color: #f9f9f9; /* White background for even cells in even columns */
+}
+
+tr:nth-child(odd) td:nth-child(even) {
+  background-color: #ddd; /* Gray background for even cells in odd columns */
+}
+
+tr:nth-child(even) td:nth-child(odd) {
+  background-color: #ddd; /* Gray background for odd cells in even columns */
+}
+
+.weekly-calendar-container {
+  margin: 20px;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  max-width: 100%; /* Ensure the container doesn't exceed the viewport width */
+  height: 82vh; /* Set the desired height for the scrollable container */
+  /* border-radius: 8px; */ /* Set the desired border-radius for rounded corners */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Add a light horizontal line for 15-minute intervals */
+.hour-label::before {
+  content: "";
+  position: absolute;
+  top: 25%;
+  left: 0;
+  right: 0;
+}
+
+/* Style the horizontal line for 15-minute intervals in calendar cells */
+.calendar-cell::before {
+  content: "";
+  position: absolute;
+  bottom: 25%;
+  left: 0;
+  right: 0;
+}

@@ -1,7 +1,8 @@
 import React from "react";
-import WeeklyCalendarGrid from "./CalendarGrid.js";
-import Settings from "./Settings.js";
-import ToDoList from "./ToDoList.js";
+import WeeklyCalendarGrid from "./CalendarGrid.jsx";
+import Settings from "./Settings.jsx";
+import ToDoList from "./ToDoList.jsx";
+import "./index2.css";
 
 const ContentGrid = ({ selectedPage = 2 }) => {
   let componentToRender;

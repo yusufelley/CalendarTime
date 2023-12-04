@@ -1,5 +1,5 @@
 import React from "react";
-import "../GoogleCalendarGrid.css"; // Import the CSS file
+import "./GoogleCalendarGrid.css"; // Import the CSS file
 
 const WeeklyCalendarGrid = () => {
   const daysOfWeek = [
