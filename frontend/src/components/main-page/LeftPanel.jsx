@@ -1,6 +1,6 @@
 // LeftPanel.js
 import React, { useState, useEffect } from "react";
-import SmallCalendar from "./SmallCalendar.js";
+import SmallCalendar from "./SmallCalendar.jsx";
 import "react-calendar/dist/Calendar.css";
 
 const LeftPanel = ({ selectedPage, setSelectedPage }) => {
