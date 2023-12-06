@@ -68,3 +68,49 @@ table {
   left: 0;
   right: 0;
 }
+.yearly-calendar-container {
+  overflow-x: auto; /* Enable horizontal scrolling for years */
+}
+
+.scrollable-years {
+  display: flex;
+}
+
+.year-container {
+  flex: 0 0 auto; /* Prevent years from growing and shrinking */
+  margin-right: 20px; /* Add spacing between years */
+}
+
+.scrollable-weeks {
+  height: 500px; /* Set a fixed height for the weeks container */
+  overflow-y: auto; /* Enable vertical scrolling for weeks */
+}
+/* Add this to your GoogleCalendarGrid.css or your styling file */
+
+.week-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #f0f0f0; /* Background color for the week navigation bar */
+}
+
+.week-navigation button {
+  background-color: #f76e72; /* Button background color */
+  color: #fff; /* Button text color */
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s;
+}
+
+.week-navigation button:hover {
+  background-color: #0056b3; /* Hover state background color */
+}
+
+.week-navigation span {
+  font-size: 16px;
+  font-weight: bold;
+}
