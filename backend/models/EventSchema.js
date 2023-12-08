@@ -1,38 +1,38 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const eventSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   repeating: {
     type: Boolean,
-    default: false
+    default: false,
   },
   when: {
     date: {
       type: Date,
-      required: true
+      required: true,
     },
     time: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   location: {
     type: String,
-    required: true
+    required: true,
   },
   description: {
     type: String,
-    default: ''
+    default: "",
   },
   color: {
     type: String,
-    default: '#FFFFFF' // Default to white color
-  }
+    default: "#FFFFFF", // Default to white color
+  },
 });
 
-const Event = mongoose.model('Event', eventSchema);
+const Event = mongoose.model("Event", eventSchema);
 
-module.exports = Event;
+export default Event;

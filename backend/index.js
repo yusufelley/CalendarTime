@@ -1,26 +1,27 @@
 import express from "express";
-import { createLogger, transports, format } from "winston";
+import dotenv from "dotenv";
+import connectDB from "./utils/database.js";
+import { taskRouter } from "./routes/taskRouter.js";
+import log from "./utils/logger.js";
+import logger from "morgan";
 
 const app = express();
-export const port = process.env.PORT || 3001;
 
-const logFormat = format.printf(({ timestamp, level, message }) => {
-  return `${timestamp} [${level}]: ${message}`;
-});
+// Initialize environment variables
+dotenv.config();
 
-export const logger = createLogger({
-  level: "info",
-  format: format.combine(format.timestamp(), logFormat),
-  transports: [
-    new transports.Console(), // Log to the console
-    // new transports.File({ filename: "app.log" }), // Log to a file
-  ],
-});
+export const PORT = process.env.PORT || 3001;
+
+// Connect to database
+connectDB(process.env.MONGODB_URI);
 
 app.use(express.json());
+app.use(logger("tiny"));
+
+app.use("/task", taskRouter);
 
 app.use((req, res, next) => {
-  logger.info(`Received ${req.method} request for ${req.url}`);
+  log.info(`Received ${req.method} request for ${req.url}`);
   next();
 });
 
@@ -29,10 +30,10 @@ app.get("/", (req, res) => {
 });
 
 app.get("*", (req, res) => {
-  logger.warn(`Route not found: ${req.url}`);
+  log.warn(`Route not found: ${req.url}`);
   res.status(404).send("Route does not exist");
 });
 
-app.listen(port, () => {
-  logger.info(`Server Started on Port ${port}`);
+app.listen(PORT, () => {
+  log.info(`Server Started on Port ${PORT}`);
 });
