@@ -1,8 +1,7 @@
 import React from "react";
-import WeeklyCalendarGrid from "./CalendarGrid.jsx";
+import WeekCalendar from "./WeeklyCalendar.jsx";
 import Settings from "./Settings.jsx";
 import ToDoList from "./ToDoList.jsx";
-import "./index2.css";
 
 const ContentGrid = ({ selectedPage = 2 }) => {
   let componentToRender;
@@ -15,7 +14,8 @@ const ContentGrid = ({ selectedPage = 2 }) => {
       componentToRender = <Settings />;
       break;
     default:
-      componentToRender = <WeeklyCalendarGrid />;
+      // componentToRender = <WeeklyCalendarGrid />;
+      componentToRender = <WeekCalendar />;
   }
 
   return <div className="content-grid">{componentToRender}</div>;

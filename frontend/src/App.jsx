@@ -15,7 +15,7 @@ function App() {
     <div className="app">
       <LeftPanel selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
       <div className="main-content">
-        <Header />
+        {/* <Header /> */}
         <ContentGrid selectedPage={selectedPage} />
       </div>
     </div>

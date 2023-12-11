@@ -60,6 +60,10 @@ table {
   right: 0;
 }
 
+.has-event {
+  background-color: #0056b3;
+}
+
 /* Style the horizontal line for 15-minute intervals in calendar cells */
 .calendar-cell::before {
   content: "";

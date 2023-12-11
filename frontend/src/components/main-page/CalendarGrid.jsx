@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./GoogleCalendarGrid.css"; // Import the CSS file
+// import "./GoogleCalendarGrid.css"; 
 
 const WeeklyCalendarGrid = () => {
   const daysOfWeek = [
@@ -12,22 +12,24 @@ const WeeklyCalendarGrid = () => {
     "Saturday",
   ];
 
-  const hoursOfDay = Array.from({ length: 24 * 4 }, (_, index) => index);
-
+  const hoursOfDay = Array.from({ length: 24 }, (_, index) => index);
+  console.log(hoursOfDay);
   // Example event data
   const events = [
-    { day: "Monday", hour: 8, quarter: 0, title: "Meeting 1" },
-    { day: "Wednesday", hour: 14, quarter: 3, title: "Meeting 2" },
+    { day: "Monday", hour: 8, title: "Meeting 1" },
+    { day: "Wednesday", hour: 14, title: "Meeting 2" },
     // Add more events as needed
   ];
 
-  const hasEvent = (day, hour, quarter) =>
+  const hasEvent = (day, hour) =>
     events.some(
       (event) =>
-        event.day === day && event.hour === hour && event.quarter === quarter
+        event.day === day && event.hour === hour
     );
 
   const [currentWeek, setCurrentWeek] = useState(1);
+
+  console.log("Testing hasEvent func ", hasEvent("Monday", 8)); 
 
   const handleWeekChange = (newWeek) => {
     setCurrentWeek(newWeek);
@@ -63,27 +65,29 @@ const WeeklyCalendarGrid = () => {
                       style={{ width: `${90 / daysOfWeek.length}%` }}
                     >
                       {day}
+                      {/* Add the date  */}
                     </th>
                   ))}
                 </tr>
               </thead>
               <tbody>
-                {hoursOfDay.map((timeSlot, timeIndex) => {
-                  const hour = Math.floor(timeSlot / 4);
-                  const quarter = (timeSlot % 4) * 15;
+                {hoursOfDay.map((hour, timeIndex) => {
+                  // const hour = Math.floor(hour / 4);
+                  // const quarter = (hour % 4) * 15;
 
                   return (
                     <tr key={timeIndex}>
                       <td className="hour-label">
-                        {`${hour}:${quarter === 0 ? "00" : quarter}`}
+                        {/* {`${hour}:${quarter === 0 ? "00" : quarter}`} */}
+                        {`${hour}:${ "00"}`}
                       </td>
                       {daysOfWeek.map((day, dayIndex) => (
                         <td
                           key={dayIndex}
                           className={`calendar-cell ${
-                            hasEvent(day, hour, timeSlot % 4) ? "has-event" : ""
+                            hasEvent(day, hour) ? "has-event" : ""
                           }`}
-                        ></td>
+                        >{hasEvent(day, hour) ? "EVENT" : ""}</td>
                       ))}
                     </tr>
                   );

@@ -3,7 +3,11 @@ import { Modal, Box } from "@mui/material";
 import TaskEventContainer from "../create/TaskEventContainer";
 import { useState } from "react";
 
-const Header = () => {
+import ArrowRight from '@material-ui/icons/ArrowForwardIos';
+import ArrowLeft from '@material-ui/icons/ArrowBackIos';
+
+
+const Header = ({ goToPreviousWeek, goToNextWeek }) => {
   const [openCreate, setOpenCreate] = useState(false);
 
   const handleOpenCreate = () => setOpenCreate(true);
@@ -13,8 +17,13 @@ const Header = () => {
     <div className="header">
       CalendarTime
       <div className="toggle-container">
-        <button className="toggle">Toggle Week</button>
-        <button className="create-event" onClick={handleOpenCreate}>
+        <button className="toggle" onClick={goToPreviousWeek} title="Previous Week">
+        <ArrowLeft />
+        </button>
+        <button className="toggle" onClick={goToNextWeek} title="Next Week">
+        <ArrowRight />
+        </button>
+        <button className="create-event" onClick={handleOpenCreate} title="Add Event/Task">
           Create
         </button>
       </div>

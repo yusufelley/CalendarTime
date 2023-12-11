@@ -1,7 +1,7 @@
 // LeftPanel.js
 import React, { useState, useEffect } from "react";
 import SmallCalendar from "./SmallCalendar.jsx";
-import "react-calendar/dist/Calendar.css";
+// import "react-calendar/dist/Calendar.css";
 
 const LeftPanel = ({ selectedPage, setSelectedPage }) => {
   const [isMonthlyCalendarOpen, setIsMonthlyCalendarOpen] = useState(false);
@@ -34,7 +34,7 @@ const LeftPanel = ({ selectedPage, setSelectedPage }) => {
   return (
     <div className="left-panel">
       <div className="button-container">
-        <button className="button">
+        <button className="lp-button">
           <div style={{ textAlign: "left" }}>
             <img src="https://picsum.photos/200/300" alt="User Profile" />
           </div>
@@ -44,7 +44,7 @@ const LeftPanel = ({ selectedPage, setSelectedPage }) => {
           </div>
         </button>
         <button
-          className="button"
+          className="lp-button"
           onClick={() => handleButtonClick(2)}
           style={{
             backgroundColor: selectedPage === 2 ? "#F76E72" : "transparent",
@@ -58,7 +58,7 @@ const LeftPanel = ({ selectedPage, setSelectedPage }) => {
           <br />
           Weekly Calendar
         </button>
-        <button className="button" onClick={() => handleButtonClick(3)}>
+        <button className="lp-button" onClick={() => handleButtonClick(3)}>
           <iconify-icon
             icon="icon-park-outline:list"
             style={{ fontSize: "3em" }}
@@ -66,7 +66,7 @@ const LeftPanel = ({ selectedPage, setSelectedPage }) => {
           <br />
           To-Do List
         </button>
-        <button className="button" onClick={() => handleButtonClick(4)}>
+        <button className="lp-button" onClick={() => handleButtonClick(4)}>
           <iconify-icon
             icon="basil:toggle-on-outline"
             style={{ fontSize: "3em" }}
@@ -75,7 +75,7 @@ const LeftPanel = ({ selectedPage, setSelectedPage }) => {
           Settings
         </button>
         <button
-          className="button"
+          className="lp-button"
           id="monthlyCalendarBtn"
           onClick={handleMonthlyCalendarClick}
         >
