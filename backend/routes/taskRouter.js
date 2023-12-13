@@ -16,14 +16,27 @@ taskRouter.get("/", async (req, res) => {
 
 // POST a new task
 taskRouter.post("/", async (req, res) => {
-  console.log(req.body);
+  const {
+    name,
+    deadline,
+    startDate,
+    description,
+    estimatedDuration,
+    minTimeBlock,
+    maxTimeBlock,
+    canSplit,
+    color,
+  } = req.body;
   const task = new Task({
-    title: req.body.title,
-    deadline: req.body.deadline,
-    description: req.body.description,
-    maxTimeBlock: req.body.maxTimeBlock,
-    estimatedTimeToCompletion: req.body.estimatedTimeToCompletion,
-    startDate: req.body.startDate,
+    name,
+    deadline,
+    startDate,
+    description,
+    estimatedDuration,
+    minTimeBlock,
+    maxTimeBlock,
+    canSplit,
+    color,
   });
 
   try {

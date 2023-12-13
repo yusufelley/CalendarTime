@@ -4,8 +4,10 @@ import connectDB from "./utils/database.js";
 import { taskRouter } from "./routes/taskRouter.js";
 import log from "./utils/logger.js";
 import logger from "morgan";
+import cors from "cors";
 
 const app = express();
+app.use(cors());
 
 // Initialize environment variables
 dotenv.config();

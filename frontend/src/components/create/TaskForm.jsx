@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { SERVER_URL } from "../../config.js";
 import {
   TextField,
   FormControl,
@@ -25,6 +26,7 @@ const TaskForm = () => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+    console.log(name, value, type, checked);
     setFormData((prevData) => ({
       ...prevData,
       [name]: type === "checkbox" ? checked : value,
@@ -33,13 +35,26 @@ const TaskForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    const createTaskURL = `${SERVER_URL}/task`;
+    console.log(`sending task data to ${createTaskURL}`, formData);
+    fetch(createTaskURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(`${createTaskURL} responded with`, data))
+      .catch((err) =>
+        console.error(`An error has occured posting to ${createTaskURL}`, err)
+      );
   };
 
   const handleIncrement = () => {
     setFormData((prevData) => ({
       ...prevData,
-      duration: prevData.duration + 1,
+      estimatedDuration: parseInt(prevData.estimatedDuration) + 1,
     }));
   };
 
@@ -47,7 +62,7 @@ const TaskForm = () => {
     if (formData.duration <= 0) return;
     setFormData((prevData) => ({
       ...prevData,
-      duration: prevData.duration - 1,
+      estimatedDuration: parseInt(prevData.estimatedDuration) - 1,
     }));
   };
 
@@ -64,7 +79,7 @@ const TaskForm = () => {
     <Stack component="form" onSubmit={handleSubmit} spacing={2} mt={2}>
       <TextField
         label="Task Name"
-        name="taskName"
+        name="name"
         value={formData.name}
         onChange={handleChange}
         fullWidth
@@ -73,6 +88,7 @@ const TaskForm = () => {
 
       <Stack direction={"row"} spacing={3}>
         <CustomDurationInput
+          name={"estimatedDuration"}
           onChange={handleChange}
           onIncrement={handleIncrement}
           onDecrement={handleDecrement}
@@ -82,7 +98,7 @@ const TaskForm = () => {
           <FormControlLabel
             control={
               <Checkbox
-                name="split"
+                name="canSplit"
                 checked={formData.canSplit}
                 onChange={handleChange}
               />
@@ -96,7 +112,7 @@ const TaskForm = () => {
         <TextField
           label="Minimum Duration (mins)"
           type="number"
-          name="minDuration"
+          name="minTimeBlock"
           value={formData.minTimeBlock}
           onChange={handleChange}
           fullWidth
@@ -106,7 +122,7 @@ const TaskForm = () => {
         <TextField
           label="Maximum Duration (mins)"
           type="number"
-          name="maxDuration"
+          name="maxTimeBlock"
           value={formData.maxTimeBlock}
           onChange={handleChange}
           fullWidth
@@ -131,7 +147,7 @@ const TaskForm = () => {
         <TextField
           label="Due Date"
           type="date"
-          name="dueDate"
+          name="deadline"
           value={formData.deadline}
           onChange={handleChange}
           fullWidth
