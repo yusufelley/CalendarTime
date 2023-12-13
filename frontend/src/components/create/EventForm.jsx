@@ -8,17 +8,18 @@ import {
   Stack,
   Chip,
 } from "@mui/material";
+import { SERVER_URL } from "../../config.js";
 
 const EventForm = () => {
   const [formData, setFormData] = useState({
-    title: "",
+    name: "",
     repeating: false,
     date: "",
     startTime: "",
     endTime: "",
     location: "",
     description: "",
-    color: "#ffffff",
+    color: undefined,
   });
 
   const handleChange = (e) => {
@@ -31,7 +32,20 @@ const EventForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    const createEventURL = `${SERVER_URL}/event`;
+    console.log(`sending event data to ${createEventURL}`, formData);
+    fetch(createEventURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(`${createEventURL} responded with`, data))
+      .catch((err) =>
+        console.error(`An error has occured posting to ${createEventURL}`, err)
+      );
   };
 
   const colors = [
@@ -47,9 +61,9 @@ const EventForm = () => {
     <Stack component="form" onSubmit={handleSubmit} spacing={2} mt={2}>
       <Stack direction={"row"} spacing={"1rem"}>
         <TextField
-          label="Title"
-          name="title"
-          value={formData.title}
+          label="Event Name"
+          name="name"
+          value={formData.name}
           onChange={handleChange}
           fullWidth
           margin="normal"
