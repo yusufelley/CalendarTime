@@ -12,15 +12,15 @@ import CustomDurationInput from "../CustomDurationInput";
 
 const TaskForm = () => {
   const [formData, setFormData] = useState({
-    taskName: "",
-    duration: 0,
-    split: false,
-    minDuration: "",
-    maxDuration: "",
+    name: "",
+    deadline: "",
     startDate: "",
-    dueDate: "",
     description: "",
-    color: "",
+    estimatedDuration: 0,
+    minTimeBlock: "",
+    maxTimeBlock: "",
+    canSplit: false,
+    color: undefined,
   });
 
   const handleChange = (e) => {
@@ -52,9 +52,9 @@ const TaskForm = () => {
   };
 
   const colors = [
+    "#3498DB",
     "#27AE60",
     "#E74C3C",
-    "#3498DB",
     "#F1C40F",
     "#9B59B6",
     "#E67E22",
@@ -65,7 +65,7 @@ const TaskForm = () => {
       <TextField
         label="Task Name"
         name="taskName"
-        value={formData.taskName}
+        value={formData.name}
         onChange={handleChange}
         fullWidth
         margin="normal"
@@ -76,14 +76,14 @@ const TaskForm = () => {
           onChange={handleChange}
           onIncrement={handleIncrement}
           onDecrement={handleDecrement}
-          duration={formData.duration}
+          duration={formData.estimatedDuration}
         />
         <FormControl>
           <FormControlLabel
             control={
               <Checkbox
                 name="split"
-                checked={formData.split}
+                checked={formData.canSplit}
                 onChange={handleChange}
               />
             }
@@ -94,20 +94,20 @@ const TaskForm = () => {
 
       <Stack direction={"row"} spacing={"1rem"}>
         <TextField
-          label="Minimum Duration (in hours)"
+          label="Minimum Duration (mins)"
           type="number"
           name="minDuration"
-          value={formData.minDuration}
+          value={formData.minTimeBlock}
           onChange={handleChange}
           fullWidth
           margin="normal"
         />
 
         <TextField
-          label="Maximum Duration (in hours)"
+          label="Maximum Duration (mins)"
           type="number"
           name="maxDuration"
-          value={formData.maxDuration}
+          value={formData.maxTimeBlock}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -132,7 +132,7 @@ const TaskForm = () => {
           label="Due Date"
           type="date"
           name="dueDate"
-          value={formData.dueDate}
+          value={formData.deadline}
           onChange={handleChange}
           fullWidth
           margin="normal"
