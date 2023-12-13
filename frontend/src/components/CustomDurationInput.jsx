@@ -3,6 +3,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 
 const CustomDurationInput = ({
+  name,
   onChange,
   onIncrement,
   onDecrement,
@@ -12,7 +13,7 @@ const CustomDurationInput = ({
     <TextField
       label="Duration"
       type="number"
-      name="duration"
+      name={name}
       value={parseInt(duration)}
       onChange={onChange}
       margin="normal"

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { SERVER_URL } from "../../config.js";
 import {
   TextField,
   FormControl,
@@ -12,19 +13,20 @@ import CustomDurationInput from "../CustomDurationInput";
 
 const TaskForm = () => {
   const [formData, setFormData] = useState({
-    taskName: "",
-    duration: 0,
-    split: false,
-    minDuration: "",
-    maxDuration: "",
+    name: "",
+    deadline: "",
     startDate: "",
-    dueDate: "",
     description: "",
-    color: "",
+    estimatedDuration: 0,
+    minTimeBlock: "",
+    maxTimeBlock: "",
+    canSplit: false,
+    color: undefined,
   });
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+    console.log(name, value, type, checked);
     setFormData((prevData) => ({
       ...prevData,
       [name]: type === "checkbox" ? checked : value,
@@ -33,13 +35,26 @@ const TaskForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    const createTaskURL = `${SERVER_URL}/task`;
+    console.log(`sending task data to ${createTaskURL}`, formData);
+    fetch(createTaskURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(`${createTaskURL} responded with`, data))
+      .catch((err) =>
+        console.error(`An error has occured posting to ${createTaskURL}`, err)
+      );
   };
 
   const handleIncrement = () => {
     setFormData((prevData) => ({
       ...prevData,
-      duration: prevData.duration + 1,
+      estimatedDuration: parseInt(prevData.estimatedDuration) + 1,
     }));
   };
 
@@ -47,14 +62,14 @@ const TaskForm = () => {
     if (formData.duration <= 0) return;
     setFormData((prevData) => ({
       ...prevData,
-      duration: prevData.duration - 1,
+      estimatedDuration: parseInt(prevData.estimatedDuration) - 1,
     }));
   };
 
   const colors = [
+    "#3498DB",
     "#27AE60",
     "#E74C3C",
-    "#3498DB",
     "#F1C40F",
     "#9B59B6",
     "#E67E22",
@@ -64,8 +79,8 @@ const TaskForm = () => {
     <Stack component="form" onSubmit={handleSubmit} spacing={2} mt={2}>
       <TextField
         label="Task Name"
-        name="taskName"
-        value={formData.taskName}
+        name="name"
+        value={formData.name}
         onChange={handleChange}
         fullWidth
         margin="normal"
@@ -73,17 +88,18 @@ const TaskForm = () => {
 
       <Stack direction={"row"} spacing={3}>
         <CustomDurationInput
+          name={"estimatedDuration"}
           onChange={handleChange}
           onIncrement={handleIncrement}
           onDecrement={handleDecrement}
-          duration={formData.duration}
+          duration={formData.estimatedDuration}
         />
         <FormControl>
           <FormControlLabel
             control={
               <Checkbox
-                name="split"
-                checked={formData.split}
+                name="canSplit"
+                checked={formData.canSplit}
                 onChange={handleChange}
               />
             }
@@ -94,20 +110,20 @@ const TaskForm = () => {
 
       <Stack direction={"row"} spacing={"1rem"}>
         <TextField
-          label="Minimum Duration (in hours)"
+          label="Minimum Duration (mins)"
           type="number"
-          name="minDuration"
-          value={formData.minDuration}
+          name="minTimeBlock"
+          value={formData.minTimeBlock}
           onChange={handleChange}
           fullWidth
           margin="normal"
         />
 
         <TextField
-          label="Maximum Duration (in hours)"
+          label="Maximum Duration (mins)"
           type="number"
-          name="maxDuration"
-          value={formData.maxDuration}
+          name="maxTimeBlock"
+          value={formData.maxTimeBlock}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -131,8 +147,8 @@ const TaskForm = () => {
         <TextField
           label="Due Date"
           type="date"
-          name="dueDate"
-          value={formData.dueDate}
+          name="deadline"
+          value={formData.deadline}
           onChange={handleChange}
           fullWidth
           margin="normal"

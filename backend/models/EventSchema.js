@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const eventSchema = new mongoose.Schema({
-  title: {
+  name: {
     type: String,
     required: true,
   },
@@ -9,15 +9,17 @@ const eventSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  when: {
-    date: {
-      type: Date,
-      required: true,
-    },
-    time: {
-      type: String,
-      required: true,
-    },
+  date: {
+    type: Date,
+    required: true,
+  },
+  startTime: {
+    type: String,
+    required: true,
+  },
+  endTime: {
+    type: String,
+    required: true,
   },
   location: {
     type: String,
@@ -29,7 +31,7 @@ const eventSchema = new mongoose.Schema({
   },
   color: {
     type: String,
-    default: "#FFFFFF", // Default to white color
+    default: "#F1C40F", // Default to yellow color
   },
 });
 

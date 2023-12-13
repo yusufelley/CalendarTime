@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const taskSchema = new mongoose.Schema({
-  title: {
+  name: {
     type: String,
     required: true,
   },
@@ -9,21 +9,33 @@ const taskSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  startDate: {
+    type: Date,
+    default: Date.now,
+  },
   description: {
     type: String,
     default: "",
+  },
+  estimatedDuration: {
+    type: Number,
+    required: true,
+  },
+  minTimeBlock: {
+    type: Number,
+    required: true,
   },
   maxTimeBlock: {
     type: Number,
     default: 60, // Default to 60 minutes
   },
-  estimatedTimeToCompletion: {
-    type: Number,
-    required: true, // In hours
+  canSplit: {
+    type: Boolean,
+    default: true,
   },
-  startDate: {
-    type: Date,
-    default: Date.now,
+  color: {
+    type: String,
+    defailt: "#3498DB", // blue
   },
 });
 
