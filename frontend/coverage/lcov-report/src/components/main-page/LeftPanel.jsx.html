@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">88.23% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/17</span>
+                <span class='fraction'>15/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>8/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">77.77% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>7/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">88.23% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/17</span>
+                <span class='fraction'>15/17</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -167,37 +167,35 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -209,7 +207,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -266,35 +266,35 @@ import React, { useState, useEffect } from "react";
 import SmallCalendar from "./SmallCalendar.jsx";
 // import "react-calendar/dist/Calendar.css";
 &nbsp;
-const LeftPanel = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> selectedPage, setSelectedPage }) =&gt; {</span>
-  const [isMonthlyCalendarOpen, setIsMonthlyCalendarOpen] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
+const LeftPanel = ({ selectedPage, setSelectedPage }) =&gt; {
+  const [isMonthlyCalendarOpen, setIsMonthlyCalendarOpen] = useState(false);
 &nbsp;
-  const handleMonthlyCalendarClick = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    setIsMonthlyCalendarOpen(!isMonthlyCalendarOpen);</span>
+  const handleMonthlyCalendarClick = () =&gt; {
+    setIsMonthlyCalendarOpen(!isMonthlyCalendarOpen);
   };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-    const closePopupOnOutsideClick = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>vent) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      if (</span>
+  useEffect(() =&gt; {
+    const closePopupOnOutsideClick = (event) =&gt; {
+      if (
         isMonthlyCalendarOpen &amp;&amp;
         event.target.closest(".monthly-calendar-popup") === null
       ) {
-<span class="cstat-no" title="statement not covered" >        setIsMonthlyCalendarOpen(false);</span>
+        setIsMonthlyCalendarOpen(false);
       }
     };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    document.addEventListener("click", closePopupOnOutsideClick);</span>
+    document.addEventListener("click", closePopupOnOutsideClick);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      document.removeEventListener("click", closePopupOnOutsideClick);</span>
+    return () =&gt; {
+      document.removeEventListener("click", closePopupOnOutsideClick);
     };
   }, [isMonthlyCalendarOpen]);
 &nbsp;
-  const handleButtonClick = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(n</span>umber) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    setSelectedPage(number);</span>
+  const handleButtonClick = (number) =&gt; {
+    setSelectedPage(number);
   };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;div className="left-panel"&gt;
       &lt;div className="button-container"&gt;
         &lt;button className="lp-button"&gt;
@@ -308,10 +308,10 @@ const LeftPanel = <span class="cstat-no" title="statement not covered" ><span cl
         &lt;/button&gt;
         &lt;button
           className="lp-button"
-          onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleButtonClick(2)}</span>
+          onClick={() =&gt; handleButtonClick(2)}
           style={{
-            backgroundColor: selectedPage === 2 ? "#F76E72" : "transparent",
-            color: selectedPage === 2 ? "white" : "black",
+            backgroundColor: selectedPage === 2 ? <span class="branch-0 cbranch-no" title="branch not covered" >"#F76E72" </span>: "transparent",
+            color: selectedPage === 2 ? <span class="branch-0 cbranch-no" title="branch not covered" >"white" </span>: "black",
           }}
         &gt;
           &lt;iconify-icon
@@ -367,7 +367,7 @@ export default LeftPanel;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-14T17:01:30.835Z
+                at 2023-12-14T17:20:39.526Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -13,10 +13,12 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@iconify/react": "^4.1.1",
     "@material-ui/icons": "^4.11.3",
     "@mui/icons-material": "^5.14.15",
     "@mui/material": "^5.14.15",
     "dayjs": "^1.11.10",
+    "iconify": "^1.4.0",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-calendar": "^4.6.1",
