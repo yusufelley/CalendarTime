@@ -14,6 +14,7 @@ import Modal from "@mui/material/Modal";
 import { fontSize } from "@mui/system";
 import { SERVER_URL } from "../../config.js";
 import { DeleteButton } from "../deleteButton/deleteButton.jsx";
+import EventCardModal from "../eventCard/eventCardModal.jsx";
 
 const selectedEvents = [
   {
@@ -187,6 +188,7 @@ const EventComponent = (props) => {
     p: 4,
   };
 
+  console.log("open", open);
   return (
     <Button
       style={{
@@ -205,72 +207,18 @@ const EventComponent = (props) => {
         onClick={handleOpen}
         style={{
           backgroundColor: props.color,
-          // borderRadius: "5px",
           height: "100%",
           width: "100%",
           color: "white",
           cursor: "pointer",
           fontSize: 10,
-          // boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.1)",
-          // padding: "5px",
         }}
       >
         {props.name}
       </Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            {props.name}
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {"Start: " + props.start.toLocaleString().substring(0, 21)}
-            <br />
-            {"End: " + props.end.toLocaleString().substring(0, 21)}
-            <br />
-            {props.description}
-          </Typography>
-          <DeleteButton
-            type={"event"}
-            id={props._id}
-            closeModal={handleClose}
-          />
-        </Box>
-      </Modal>
+      <EventCardModal open={open} onClose={handleClose} event={props} />
     </Button>
   );
 };
-
-// EventComponent.propTypes = {
-//   start: PropTypes.instanceOf(moment).isRequired,
-//   onEventClick: PropTypes.func.isRequired,
-// };
-
-// const EventModal = ({ event, onClose }) => (
-//   <div
-//     className="event-modal"
-//     style={{ position: "absolute", top: event.top, left: event.left, zIndex: '-1' }}
-//   >
-//     {/* Customize modal content based on the event */}
-//     <div>{`Event Start: ${event.start.format("LLLL")}`}</div>
-//     <div>{`Event End: ${event.end.format("LLLL")}`}</div>
-//     <div>{`Event End: ${event.name}`}</div>
-//     <button onClick={onClose}>Close</button>
-//   </div>
-// );
-
-// EventModal.propTypes = {
-//   event: PropTypes.shape({
-//     top: PropTypes.number.isRequired,
-//     left: PropTypes.number.isRequired,
-//     start: PropTypes.instanceOf(moment).isRequired,
-//     end: PropTypes.instanceOf(moment).isRequired,
-//   }),
-//   onClose: PropTypes.func.isRequired,
-// };
 
 export default WeekCalendarDep;
