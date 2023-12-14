@@ -13,9 +13,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { fontSize } from "@mui/system";
 import { SERVER_URL } from "../../config.js";
-
-
-
+import { DeleteButton } from "../deleteButton/deleteButton.jsx";
 
 const selectedEvents = [
   {
@@ -57,21 +55,18 @@ const selectedEvents = [
 ];
 
 const convertToMomentObjects = (events) => {
-  return events.map(event => {
-      const startDate = moment.utc(event.date).format('YYYY-MM-DD');
-      console.log("Actual Date: ", event.date);
-      const startMoment = moment(`${startDate}T${event.startTime}`);
-      console.log("Start Moment: " , startMoment);
-      const endMoment = moment(`${startDate}T${event.endTime}`);
+  return events.map((event) => {
+    const startDate = moment.utc(event.date).format("YYYY-MM-DD");
+    const startMoment = moment(`${startDate}T${event.startTime}`);
+    const endMoment = moment(`${startDate}T${event.endTime}`);
 
-      return {
-          ...event,
-          start: startMoment,
-          end: endMoment
-      };
+    return {
+      ...event,
+      start: startMoment,
+      end: endMoment,
+    };
   });
 };
-
 
 const fetchEventsURL = `${SERVER_URL}/event`;
 
@@ -79,7 +74,9 @@ const fetchEvents = async () => {
   try {
     const response = await fetch(fetchEventsURL);
     if (!response.ok) {
-      throw new Error(`Request to ${fetchEventsURL} failed with status ${response.status}`);
+      throw new Error(
+        `Request to ${fetchEventsURL} failed with status ${response.status}`
+      );
     }
     const data = await response.json();
     // Handle the retrieved events data here
@@ -92,10 +89,7 @@ const fetchEvents = async () => {
   }
 };
 
-
 class WeekCalendarDep extends PureComponent {
-  
-  
   componentDidMount() {
     fetchEvents()
       .then((eventsData) => {
@@ -106,7 +100,6 @@ class WeekCalendarDep extends PureComponent {
         console.error("Error fetching events:", error);
       });
   }
-
 
   state = {
     firstDay: moment(),
@@ -195,7 +188,6 @@ const EventComponent = (props) => {
   };
 
   return (
-    
     <Button
       style={{
         backgroundColor: props.color,
@@ -206,22 +198,25 @@ const EventComponent = (props) => {
         color: "white",
         cursor: "pointer",
         boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.1)",
-        padding: "5px", 
+        padding: "5px",
       }}
     >
-      <Button onClick={handleOpen}
-       style={{
-        backgroundColor: props.color,
-        // borderRadius: "5px",
-        height: "100%",
-        width: "100%",
-        color: "white",
-        cursor: "pointer",
-        fontSize: 10
-        // boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.1)",
-        // padding: "5px",
-      }}
-      >{props.name}</Button>
+      <Button
+        onClick={handleOpen}
+        style={{
+          backgroundColor: props.color,
+          // borderRadius: "5px",
+          height: "100%",
+          width: "100%",
+          color: "white",
+          cursor: "pointer",
+          fontSize: 10,
+          // boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.1)",
+          // padding: "5px",
+        }}
+      >
+        {props.name}
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -232,13 +227,18 @@ const EventComponent = (props) => {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             {props.name}
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 } }>
-            {"Start: " +  props.start.toLocaleString().substring(0,21)}
-            <br/> 
-            {"End: " +  props.end.toLocaleString().substring(0,21)}
-            <br/> 
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            {"Start: " + props.start.toLocaleString().substring(0, 21)}
+            <br />
+            {"End: " + props.end.toLocaleString().substring(0, 21)}
+            <br />
             {props.description}
           </Typography>
+          <DeleteButton
+            type={"event"}
+            id={props._id}
+            closeModal={handleClose}
+          />
         </Box>
       </Modal>
     </Button>
