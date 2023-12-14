@@ -12,6 +12,10 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { fontSize } from "@mui/system";
+import { SERVER_URL } from "../../config.js";
+
+
+
 
 const selectedEvents = [
   {
@@ -20,7 +24,7 @@ const selectedEvents = [
     name: "Take out trash",
     repeating: false,
     location: "Your location",
-    description: "My mother has ordered me to take out the trash by 8PM today otherwise I will face severe consequences",
+    description: "Attend the ball",
     color: "salmon",
   },
   {
@@ -38,7 +42,7 @@ const selectedEvents = [
     name: "Take out trash",
     repeating: false,
     location: "Your location",
-    description: "My mother has ordered me to take out the trash by 8PM today otherwise I will face severe consequences My mother has ordered me to take out the trash by 8PM today otherwise I will face severe consequences",
+    description: "Attend the local ball",
     color: "#CBC3E3",
   },
   {
@@ -52,10 +56,62 @@ const selectedEvents = [
   },
 ];
 
+const convertToMomentObjects = (events) => {
+  return events.map(event => {
+      const startDate = moment.utc(event.date).format('YYYY-MM-DD');
+      console.log("Actual Date: ", event.date);
+      const startMoment = moment(`${startDate}T${event.startTime}`);
+      console.log("Start Moment: " , startMoment);
+      const endMoment = moment(`${startDate}T${event.endTime}`);
+
+      return {
+          ...event,
+          start: startMoment,
+          end: endMoment
+      };
+  });
+};
+
+
+const fetchEventsURL = `${SERVER_URL}/event`;
+
+const fetchEvents = async () => {
+  try {
+    const response = await fetch(fetchEventsURL);
+    if (!response.ok) {
+      throw new Error(`Request to ${fetchEventsURL} failed with status ${response.status}`);
+    }
+    const data = await response.json();
+    // Handle the retrieved events data here
+    console.log(`Events fetched successfully:`, data);
+    const updatedEvents = convertToMomentObjects(data);
+    console.log(updatedEvents);
+    return updatedEvents;
+  } catch (err) {
+    console.error(`An error has occurred while fetching events:`, err);
+  }
+};
+
+
 class WeekCalendarDep extends PureComponent {
+  
+  
+  componentDidMount() {
+    fetchEvents()
+      .then((eventsData) => {
+        // Update the state with the fetched events
+        this.setState({ selectedIntervals: eventsData });
+      })
+      .catch((error) => {
+        console.error("Error fetching events:", error);
+      });
+  }
+
+
   state = {
     firstDay: moment(),
-    selectedIntervals: selectedEvents,
+    // selectedIntervals: selectedEvents,
+    selectedIntervals: [],
     showModal: false,
     modalEvent: null,
   };
