@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1702572696226" clover="3.2.0">
-  <project timestamp="1702572696226" name="All files">
-    <metrics statements="137" coveredstatements="15" conditionals="62" coveredconditionals="0" methods="70" coveredmethods="6" elements="269" coveredelements="21" complexity="0" loc="137" ncloc="137" packages="4" files="18" classes="18"/>
+<coverage generated="1702573290866" clover="3.2.0">
+  <project timestamp="1702573290866" name="All files">
+    <metrics statements="137" coveredstatements="20" conditionals="62" coveredconditionals="0" methods="70" coveredmethods="8" elements="269" coveredelements="28" complexity="0" loc="137" ncloc="137" packages="4" files="18" classes="18"/>
     <package name="src">
       <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="App.jsx" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/App.jsx">
@@ -103,7 +103,7 @@
       </file>
     </package>
     <package name="src.components.main-page">
-      <metrics statements="76" coveredstatements="15" conditionals="20" coveredconditionals="0" methods="37" coveredmethods="6"/>
+      <metrics statements="76" coveredstatements="20" conditionals="20" coveredconditionals="0" methods="37" coveredmethods="8"/>
       <file name="CalendarGrid.jsx" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/components/main-page/CalendarGrid.jsx">
         <metrics statements="18" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="10" coveredmethods="0"/>
         <line num="4" count="0" type="stmt"/>
@@ -165,15 +165,15 @@
         <line num="69" count="0" type="stmt"/>
       </file>
       <file name="Settings.jsx" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/components/main-page/Settings.jsx">
-        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
       </file>
       <file name="SmallCalendar.jsx" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/components/main-page/SmallCalendar.jsx">
-        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
+        <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
       </file>
       <file name="ToDoList.jsx" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/components/main-page/ToDoList.jsx">
