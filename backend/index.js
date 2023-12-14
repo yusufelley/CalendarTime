@@ -2,10 +2,13 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./utils/database.js";
 import { taskRouter } from "./routes/taskRouter.js";
+import { eventRouter } from "./routes/eventRouter.js";
 import log from "./utils/logger.js";
 import logger from "morgan";
+import cors from "cors";
 
 const app = express();
+app.use(cors());
 
 // Initialize environment variables
 dotenv.config();
@@ -19,6 +22,7 @@ app.use(express.json());
 app.use(logger("tiny"));
 
 app.use("/task", taskRouter);
+app.use("/event", eventRouter);
 
 app.use((req, res, next) => {
   log.info(`Received ${req.method} request for ${req.url}`);
