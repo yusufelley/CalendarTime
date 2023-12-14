@@ -11,6 +11,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import { fontSize } from "@mui/system";
 
 const selectedEvents = [
   {
@@ -19,26 +20,26 @@ const selectedEvents = [
     name: "Take out trash",
     repeating: false,
     location: "Your location",
-    description: "Your description",
-    color: "#FFFFFF",
+    description: "My mother has ordered me to take out the trash by 8PM today otherwise I will face severe consequences",
+    color: "salmon",
   },
   {
     start: moment().add(1, "days").hour(10).minute(0),
-    end: moment().add(1, "days").hour(11).minute(0),
+    end: moment().add(1, "days").hour(14).minute(0),
     name: "Go to Class",
     repeating: false,
     location: "Your location",
-    description: "Your description",
-    color: "#FFFFFF",
+    description: "Class is class is class is class is class",
+    color: "lightblue",
   },
   {
     start: moment().add(2, "days").hour(10).minute(0),
-    end: moment().add(2, "days").hour(11).minute(0),
+    end: moment().add(2, "days").hour(13).minute(0),
     name: "Take out trash",
     repeating: false,
     location: "Your location",
-    description: "Your description",
-    color: "#FFFFFF",
+    description: "My mother has ordered me to take out the trash by 8PM today otherwise I will face severe consequences My mother has ordered me to take out the trash by 8PM today otherwise I will face severe consequences",
+    color: "#CBC3E3",
   },
   {
     start: moment().add(6, "days").hour(8).minute(0),
@@ -47,7 +48,7 @@ const selectedEvents = [
     repeating: false,
     location: "Your location",
     description: "Your description",
-    color: "#FFFFFF",
+    color: "#CBC3E3",
   },
 ];
 
@@ -139,18 +140,32 @@ const EventComponent = (props) => {
 
   return (
     
-    <button
+    <Button
       style={{
-        backgroundColor: "#039BE5",
+        backgroundColor: props.color,
         borderRadius: "5px",
-        height: "90%",
+        height: "100%",
+        width: "109%",
+        alignContent: "center",
         color: "white",
         cursor: "pointer",
         boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.1)",
-        padding: "5px",
+        padding: "5px", 
       }}
     >
-      <Button onClick={handleOpen}>{props.name}</Button>
+      <Button onClick={handleOpen}
+       style={{
+        backgroundColor: props.color,
+        // borderRadius: "5px",
+        height: "100%",
+        width: "100%",
+        color: "white",
+        cursor: "pointer",
+        fontSize: 10
+        // boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.1)",
+        // padding: "5px",
+      }}
+      >{props.name}</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -161,12 +176,16 @@ const EventComponent = (props) => {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             {props.name}
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          <Typography id="modal-modal-description" sx={{ mt: 2 } }>
+            {"Start: " +  props.start.toLocaleString().substring(0,21)}
+            <br/> 
+            {"End: " +  props.end.toLocaleString().substring(0,21)}
+            <br/> 
+            {props.description}
           </Typography>
         </Box>
       </Modal>
-    </button>
+    </Button>
   );
 };
 
