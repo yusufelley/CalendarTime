@@ -1,66 +1,57 @@
-// WeeklyCalendar.test.js
+// WeekCalendarDep.test.js
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/';
+import { render, fireEvent, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import WeekCalendarDep from '../../../src/components/main-page/WeeklyCalendar';
-import moment from 'moment';
+import { useQuery } from 'react-query';
+import { useEventContext } from '../../../src/EventContext';
 
-jest.mock('../../../src/components/main-page/Header', () => {
-  return {
-    __esModule: true,
-    default: ({ goToNextWeek, goToPreviousWeek }) => (
-      <div>
-        <button onClick={goToNextWeek}>Next Week</button>
-        <button onClick={goToPreviousWeek}>Previous Week</button>
-      </div>
-    ),
-  };
-});
+// Mock child components and dependencies
+jest.mock('react-week-calendar', () => () => <div>Mocked WeekCalendar</div>);
+jest.mock('../../../src/components/main-page/Header', () => () => <div>Mocked Header</div>);
+jest.mock('../../../src/components/eventCard/EventCard', () => () => <div>Mocked EventCard</div>);
 
-jest.mock('react-week-calendar', () => {
-  return {
-    __esModule: true,
-    default: () => <div>Week Calendar</div>,
-  };
-});
-jest.mock('@mui/material/Modal', () => () => <div>Mocked Modal</div>);
-
-global.fetch = jest.fn(() =>
-  Promise.resolve({
-    json: () => Promise.resolve([
-      // Your mock event data
-    ]),
-    ok: true,
-  })
-);
+// Mock react-query and EventContext
+jest.mock('react-query', () => ({
+  useQuery: jest.fn(),
+}));
+jest.mock('../../../src/EventContext', () => ({
+  useEventContext: jest.fn(),
+}));
 
 describe('WeekCalendarDep', () => {
-  it('renders correctly', () => {
-    const { getByText } = render(<WeekCalendarDep />);
-    expect(getByText('Week Calendar')).toBeInTheDocument();
+  beforeEach(() => {
+    useQuery.mockImplementation(() => ({
+      data: [],
+      refetch: jest.fn(),
+    }));
+    useEventContext.mockImplementation(() => ({
+      triggerFetch: false,
+      resetTriggerFetch: jest.fn(),
+    }));
   });
 
-  it('navigates to the next week', () => {
-    const { getByText } = render(<WeekCalendarDep />);
-    const nextWeekButton = getByText('Next Week');
-    fireEvent.click(nextWeekButton);
-    // Assertions to check if the week has changed to next week
-  });
-
-  it('navigates to the previous week', () => {
-    const { getByText } = render(<WeekCalendarDep />);
-    const prevWeekButton = getByText('Previous Week');
-    fireEvent.click(prevWeekButton);
-    // Assertions to check if the week has changed to previous week
-  });
-  
-  it('opens and closes the modal on event click', () => {
+  it('renders the WeekCalendarDep component', () => {
     render(<WeekCalendarDep />);
-    // Simulate clicking an event to open the modal
-    // Add assertions for the modal opening
-    // Simulate closing the modal
-    // Add assertions for the modal closing
+    expect(screen.getByText('Mocked WeekCalendar')).toBeInTheDocument();
   });
 
-  // More tests here...
+  it('navigates weeks', () => {
+    render(<WeekCalendarDep />);
+    // Assuming the week navigation is rendered as part of the Mocked Header
+    // Simulate week navigation and test the state changes
+  });
+
+  // Test interaction with react-query for fetching events
+  it('fetches events', () => {
+    const refetchMock = jest.fn();
+    useQuery.mockImplementation(() => ({
+      data: [{ /* mock event data */ }],
+      refetch: refetchMock,
+    }));
+    render(<WeekCalendarDep />);
+    // Test if the events are fetched and rendered correctly
+  });
+
+  // Additional tests can be added here to cover other aspects of the component
 });

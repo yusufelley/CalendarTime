@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">8.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/12</span>
+                <span class='fraction'>12/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">9.09% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/11</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -105,31 +105,31 @@
 <a name='L40'></a><a href='#L40'>40</a>
 <a name='L41'></a><a href='#L41'>41</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -145,31 +145,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from 'react';
 &nbsp;
-const CheckableList = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-  const [checkedItems, setCheckedItems] = <span class="cstat-no" title="statement not covered" >useState([]);</span>
-  const items = <span class="cstat-no" title="statement not covered" >['Take out trash', 'Clean Room', 'Study for Finals', 'Relax'];</span>
+const CheckableList = () =&gt; {
+  const [checkedItems, setCheckedItems] = useState([]);
+  const items = ['Take out trash', 'Clean Room', 'Study for Finals', 'Relax'];
 &nbsp;
-  const handleCheckboxChange = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; {</span>
-    const isChecked = <span class="cstat-no" title="statement not covered" >checkedItems.includes(item);</span>
-<span class="cstat-no" title="statement not covered" >    if (isChecked) {</span>
-<span class="cstat-no" title="statement not covered" >      setCheckedItems(checkedItems.filter(<span class="fstat-no" title="function not covered" >(c</span>heckedItem) =&gt; <span class="cstat-no" title="statement not covered" >checkedItem !== item)</span>);</span>
+  const handleCheckboxChange = (item) =&gt; {
+    const isChecked = checkedItems.includes(item);
+    if (isChecked) {
+      setCheckedItems(checkedItems.filter((checkedItem) =&gt; checkedItem !== item));
     } else {
-<span class="cstat-no" title="statement not covered" >      setCheckedItems([...checkedItems, item]);</span>
+      setCheckedItems([...checkedItems, item]);
     }
   };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;div&gt;
       &lt;h2&gt;To-do&lt;/h2&gt;
       &lt;ul style={{ listStyleType: 'none', padding: 0 }}&gt;
-        {items.map(<span class="fstat-no" title="function not covered" >(i</span>tem, index) =&gt; (
-<span class="cstat-no" title="statement not covered" >          &lt;li key={index} style={{ marginBottom: '8px' }}&gt;</span>
+        {items.map((item, index) =&gt; (
+          &lt;li key={index} style={{ marginBottom: '8px' }}&gt;
             &lt;label style={{ display: 'flex', alignItems: 'center' }}&gt;
               &lt;input
                 type="checkbox"
                 value={item}
                 checked={checkedItems.includes(item)}
-                onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleCheckboxChange(item)}</span>
+                onChange={() =&gt; handleCheckboxChange(item)}
                 style={{ marginRight: '4px' }}
               /&gt;
               {item}
@@ -190,7 +190,7 @@ export default CheckableList;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-15T05:36:39.913Z
+                at 2023-12-15T06:11:33.341Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
