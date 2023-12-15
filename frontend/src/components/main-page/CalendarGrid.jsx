@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import "./GoogleCalendarGrid.css"; 
+// import "./GoogleCalendarGrid.css";
 
 const WeeklyCalendarGrid = () => {
   const daysOfWeek = [
@@ -13,7 +13,6 @@ const WeeklyCalendarGrid = () => {
   ];
 
   const hoursOfDay = Array.from({ length: 24 }, (_, index) => index);
-  console.log(hoursOfDay);
   // Example event data
   const events = [
     { day: "Monday", hour: 8, title: "Meeting 1" },
@@ -22,14 +21,11 @@ const WeeklyCalendarGrid = () => {
   ];
 
   const hasEvent = (day, hour) =>
-    events.some(
-      (event) =>
-        event.day === day && event.hour === hour
-    );
+    events.some((event) => event.day === day && event.hour === hour);
 
   const [currentWeek, setCurrentWeek] = useState(1);
 
-  console.log("Testing hasEvent func ", hasEvent("Monday", 8)); 
+  console.log("Testing hasEvent func ", hasEvent("Monday", 8));
 
   const handleWeekChange = (newWeek) => {
     setCurrentWeek(newWeek);
@@ -79,7 +75,7 @@ const WeeklyCalendarGrid = () => {
                     <tr key={timeIndex}>
                       <td className="hour-label">
                         {/* {`${hour}:${quarter === 0 ? "00" : quarter}`} */}
-                        {`${hour}:${ "00"}`}
+                        {`${hour}:${"00"}`}
                       </td>
                       {daysOfWeek.map((day, dayIndex) => (
                         <td
@@ -87,7 +83,9 @@ const WeeklyCalendarGrid = () => {
                           className={`calendar-cell ${
                             hasEvent(day, hour) ? "has-event" : ""
                           }`}
-                        >{hasEvent(day, hour) ? "EVENT" : ""}</td>
+                        >
+                          {hasEvent(day, hour) ? "EVENT" : ""}
+                        </td>
                       ))}
                     </tr>
                   );

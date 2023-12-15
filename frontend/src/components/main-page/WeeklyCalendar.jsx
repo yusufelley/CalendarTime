@@ -13,11 +13,9 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { fontSize } from "@mui/system";
 import { SERVER_URL } from "../../config.js";
-import { useQuery } from 'react-query';
+import { useQuery } from "react-query";
 import { useState, useEffect } from "react";
-import { useEventContext } from '../../EventContext.jsx';
-
-
+import { useEventContext } from "../../EventContext.jsx";
 
 import { DeleteButton } from "../deleteButton/deleteButton.jsx";
 import EventCardModal from "../eventCard/eventCardModal.jsx";
@@ -87,7 +85,6 @@ const fetchEvents = async () => {
     }
     const data = await response.json();
     // Handle the retrieved events data here
-    console.log(`Events fetched successfully:`, data);
     const updatedEvents = convertToMomentObjects(data);
     console.log(updatedEvents);
     return updatedEvents;
@@ -96,41 +93,39 @@ const fetchEvents = async () => {
   }
 };
 
-
 // class WeekCalendarDep extends PureComponent {
-  const WeekCalendarDep = () => {
-    const [firstDay, setFirstDay] = useState(moment());
-    const [selectedIntervals, setSelectedIntervals] = useState([]);
-    const [showModal, setShowModal] = useState(false);
-    const [modalEvent, setModalEvent] = useState(null);
+const WeekCalendarDep = () => {
+  const [firstDay, setFirstDay] = useState(moment());
+  const [selectedIntervals, setSelectedIntervals] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [modalEvent, setModalEvent] = useState(null);
 
-    const { data: events, refetch } = useQuery('events', fetchEvents, {
-      onSuccess: (data) => {
-        setSelectedIntervals(data);
-      }
-    });
+  const { data: events, refetch } = useQuery("events", fetchEvents, {
+    onSuccess: (data) => {
+      setSelectedIntervals(data);
+    },
+  });
 
-    const { triggerFetch, resetTriggerFetch } = useEventContext();
+  const { triggerFetch, resetTriggerFetch } = useEventContext();
 
-    useEffect(() => {
-      if (triggerFetch) {
-        refetch();
-        resetTriggerFetch();
-      }
-    }, [triggerFetch, refetch, resetTriggerFetch]);
-    
+  useEffect(() => {
+    if (triggerFetch) {
+      refetch();
+      resetTriggerFetch();
+    }
+  }, [triggerFetch, refetch, resetTriggerFetch]);
 
-    console.log("Selected Intervals: ", selectedIntervals);
+  console.log("Selected Intervals: ", selectedIntervals);
 
   const startTime = moment().hour(0);
   const endTime = moment().hour(23);
 
   const goToNextWeek = () => {
-    setFirstDay(prevDay => prevDay.clone().add(7, "days"));
+    setFirstDay((prevDay) => prevDay.clone().add(7, "days"));
   };
 
   const goToPreviousWeek = () => {
-    setFirstDay(prevDay => prevDay.clone().subtract(7, "days"));
+    setFirstDay((prevDay) => prevDay.clone().subtract(7, "days"));
   };
 
   const onEventClick = (event) => {
@@ -143,33 +138,33 @@ const fetchEvents = async () => {
     setModalEvent(null);
   };
 
-    return (
-      <div>
-        <Header
-          goToNextWeek={goToNextWeek} // Use the function directly
-          goToPreviousWeek={goToPreviousWeek} // Use the function directly
-        />
-        <WeekCalendar
-          timeFormat={"h:mm a"}
-          firstDay={firstDay} // Use the state variable
-          startTime={startTime}
-          endTime={endTime}
-          scaleUnit={60}
-          eventSpacing={15}
-          selectedIntervals={selectedIntervals} // Use the state variable
-          onEventClick={onEventClick} // Use the function directly
-          eventComponent={EventComponent}
-          useModal={false}
-          cellHeight={40}
-          dayFormat={"ddd \n DD"}
-          className="week-calendar"
-        />
-        {/* {showModal && modalEvent && (
+  return (
+    <div>
+      <Header
+        goToNextWeek={goToNextWeek} // Use the function directly
+        goToPreviousWeek={goToPreviousWeek} // Use the function directly
+      />
+      <WeekCalendar
+        timeFormat={"h:mm a"}
+        firstDay={firstDay} // Use the state variable
+        startTime={startTime}
+        endTime={endTime}
+        scaleUnit={60}
+        eventSpacing={15}
+        selectedIntervals={selectedIntervals} // Use the state variable
+        onEventClick={onEventClick} // Use the function directly
+        eventComponent={EventComponent}
+        useModal={false}
+        cellHeight={40}
+        dayFormat={"ddd \n DD"}
+        className="week-calendar"
+      />
+      {/* {showModal && modalEvent && (
           <EventModal event={modalEvent} onClose={closeModal} />
         )} */}
-      </div>
-    );
-}
+    </div>
+  );
+};
 
 const EventComponent = (props) => {
   const [open, setOpen] = React.useState(false);
@@ -188,7 +183,6 @@ const EventComponent = (props) => {
     p: 4,
   };
 
-  console.log("open", open);
   return (
     <Button
       style={{

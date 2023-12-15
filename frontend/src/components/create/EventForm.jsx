@@ -16,21 +16,20 @@ import { useEventContext } from "../../EventContext.jsx";
 
 const EventForm = ({ event }) => {
   const [disable, setDisable] = useState(event ? true : false);
-  
+
   const { triggerEventFetch } = useEventContext();
-  
+
   const [formData, setFormData] = useState({
     name: event?.name || "",
     repeating: event?.repeating || false,
     // using moment here to translate ISODateString to date that can be used by MUI
-    date: moment(event?.date).format("YYYY-MM-DD") || "",
+    date: moment(event?.date).utc().format("YYYY-MM-DD") || "",
     startTime: event?.startTime || "",
     endTime: event?.endTime || "",
     location: event?.location || "",
     description: event?.description || "",
     color: event?.color || undefined,
   });
-
 
   const handleChange = (e) => {
     if (disable) return;
@@ -58,8 +57,7 @@ const EventForm = ({ event }) => {
       .catch((err) =>
         console.error(`An error has occured posting to ${createEventURL}`, err)
       );
-      triggerEventFetch(); // Trigger event refetch after form submission
-
+    triggerEventFetch(); // Trigger event refetch after form submission
   };
 
   const handleUpdateEvent = () => {
