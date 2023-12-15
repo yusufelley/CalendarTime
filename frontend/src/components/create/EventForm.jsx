@@ -9,8 +9,11 @@ import {
   Chip,
 } from "@mui/material";
 import { SERVER_URL } from "../../config.js";
+import { useEventContext } from "../../EventContext.jsx";
 
 const EventForm = () => {
+  const { triggerEventFetch } = useEventContext();
+
   const [formData, setFormData] = useState({
     name: "",
     repeating: false,
@@ -21,6 +24,7 @@ const EventForm = () => {
     description: "",
     color: undefined,
   });
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -46,6 +50,8 @@ const EventForm = () => {
       .catch((err) =>
         console.error(`An error has occured posting to ${createEventURL}`, err)
       );
+      triggerEventFetch(); // Trigger event refetch after form submission
+
   };
 
   const colors = [
