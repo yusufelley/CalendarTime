@@ -1,63 +1,15 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 import WeekCalendar from "react-week-calendar";
 import moment from "moment";
-
 import "react-week-calendar/dist/style.css";
 import "./WeekCalendar.css";
 import Header from "./Header";
-
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import { fontSize } from "@mui/system";
 import { SERVER_URL } from "../../config.js";
 import { useQuery } from "react-query";
 import { useState, useEffect } from "react";
 import { useEventContext } from "../../EventContext.jsx";
+import EventCard from "../eventCard/EventCard.jsx";
 
-import { DeleteButton } from "../deleteButton/deleteButton.jsx";
-import EventCardModal from "../eventCard/eventCardModal.jsx";
-
-const selectedEvents = [
-  {
-    start: moment().add(0, "days").hour(8).minute(0),
-    end: moment().add(0, "days").hour(19).minute(0),
-    name: "Take out trash",
-    repeating: false,
-    location: "Your location",
-    description: "Attend the ball",
-    color: "salmon",
-  },
-  {
-    start: moment().add(1, "days").hour(10).minute(0),
-    end: moment().add(1, "days").hour(14).minute(0),
-    name: "Go to Class",
-    repeating: false,
-    location: "Your location",
-    description: "Class is class is class is class is class",
-    color: "lightblue",
-  },
-  {
-    start: moment().add(2, "days").hour(10).minute(0),
-    end: moment().add(2, "days").hour(13).minute(0),
-    name: "Take out trash",
-    repeating: false,
-    location: "Your location",
-    description: "Attend the local ball",
-    color: "#CBC3E3",
-  },
-  {
-    start: moment().add(6, "days").hour(8).minute(0),
-    end: moment().add(6, "days").hour(10).minute(0),
-    name: "Take out trash",
-    repeating: false,
-    location: "Your location",
-    description: "Your description",
-    color: "#CBC3E3",
-  },
-];
+const fetchEventsURL = `${SERVER_URL}/event`;
 
 const convertToMomentObjects = (events) => {
   return events.map((event) => {
@@ -72,8 +24,6 @@ const convertToMomentObjects = (events) => {
     };
   });
 };
-
-const fetchEventsURL = `${SERVER_URL}/event`;
 
 const fetchEvents = async () => {
   try {
@@ -93,7 +43,6 @@ const fetchEvents = async () => {
   }
 };
 
-// class WeekCalendarDep extends PureComponent {
 const WeekCalendarDep = () => {
   const [firstDay, setFirstDay] = useState(moment());
   const [selectedIntervals, setSelectedIntervals] = useState([]);
@@ -115,10 +64,8 @@ const WeekCalendarDep = () => {
     }
   }, [triggerFetch, refetch, resetTriggerFetch]);
 
-  console.log("Selected Intervals: ", selectedIntervals);
-
-  const startTime = moment().hour(0);
-  const endTime = moment().hour(23);
+  const calendarStartTime = moment().hour(0);
+  const calendarEndTime = moment().hour(23);
 
   const goToNextWeek = () => {
     setFirstDay((prevDay) => prevDay.clone().add(7, "days"));
@@ -140,78 +87,24 @@ const WeekCalendarDep = () => {
 
   return (
     <div>
-      <Header
-        goToNextWeek={goToNextWeek} // Use the function directly
-        goToPreviousWeek={goToPreviousWeek} // Use the function directly
-      />
+      <Header goToNextWeek={goToNextWeek} goToPreviousWeek={goToPreviousWeek} />
       <WeekCalendar
         timeFormat={"h:mm a"}
-        firstDay={firstDay} // Use the state variable
-        startTime={startTime}
-        endTime={endTime}
+        firstDay={firstDay}
+        startTime={calendarStartTime}
+        endTime={calendarEndTime}
         scaleUnit={60}
         eventSpacing={15}
-        selectedIntervals={selectedIntervals} // Use the state variable
-        onEventClick={onEventClick} // Use the function directly
-        eventComponent={EventComponent}
+        selectedIntervals={selectedIntervals}
+        onEventClick={onEventClick}
+        eventComponent={EventCard}
         useModal={false}
         cellHeight={40}
         dayFormat={"ddd \n DD"}
         className="week-calendar"
       />
-      {/* {showModal && modalEvent && (
-          <EventModal event={modalEvent} onClose={closeModal} />
-        )} */}
     </div>
   );
 };
 
-const EventComponent = (props) => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
-
-  return (
-    <Button
-      style={{
-        backgroundColor: props.color,
-        borderRadius: "5px",
-        height: "100%",
-        width: "109%",
-        alignContent: "center",
-        color: "white",
-        cursor: "pointer",
-        boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.1)",
-        padding: "5px",
-      }}
-    >
-      <Button
-        onClick={handleOpen}
-        style={{
-          backgroundColor: props.color,
-          height: "100%",
-          width: "100%",
-          color: "white",
-          cursor: "pointer",
-          fontSize: 10,
-        }}
-      >
-        {props.name}
-      </Button>
-      <EventCardModal open={open} onClose={handleClose} event={props} />
-    </Button>
-  );
-};
 export default WeekCalendarDep;
