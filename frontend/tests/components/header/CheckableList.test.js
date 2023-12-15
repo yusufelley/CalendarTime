@@ -2,7 +2,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import CheckableList from '../../../src/components/main-page/CheckableList';
+import CheckableList from '../../../src/components/Header/CheckableList';
 
 describe('CheckableList', () => {
   it('renders the CheckableList component', () => {

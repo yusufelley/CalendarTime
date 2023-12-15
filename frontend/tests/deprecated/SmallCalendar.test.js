@@ -2,7 +2,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/';
-import SmallCalendar from '../../../src/components/main-page/SmallCalendar';
+import SmallCalendar from '../../src/deprecated/SmallCalendar';
 
 // Mock the react-calendar Calendar component
 jest.mock('react-calendar', () => {

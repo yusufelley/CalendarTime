@@ -2,10 +2,10 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Header from '../../../src/components/main-page/Header';
+import Header from '../../../src/components/Header/Header';
 
 // Mock TaskEventContainer component
-jest.mock('../../../src/components/create/TaskEventContainer', () => {
+jest.mock('../../../src/components/Header/Header', () => {
   return {
     __esModule: true,
     default: () => <div>Mocked TaskEventContainer</div>,

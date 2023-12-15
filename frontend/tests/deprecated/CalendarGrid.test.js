@@ -2,7 +2,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import WeeklyCalendarGrid from '../../../src/components/main-page/CalendarGrid';
+import WeeklyCalendarGrid from '../../src/deprecated/CalendarGrid';
 
 describe('WeeklyCalendarGrid', () => {
   it('renders the WeeklyCalendarGrid component', () => {
