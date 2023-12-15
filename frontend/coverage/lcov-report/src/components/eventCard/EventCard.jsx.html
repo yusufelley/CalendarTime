@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/components/CalendarItem.jsx</title>
+    <title>Code coverage report for src/components/eventCard/EventCard.jsx</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/components</a> CalendarItem.jsx</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/components/eventCard</a> EventCard.jsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>0/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>0/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
@@ -108,11 +108,11 @@
 <a name='L43'></a><a href='#L43'>43</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -125,7 +125,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -141,54 +140,55 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import PropTypes from 'prop-types';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useState } from "react";
+import { Button } from "@mui/material";
+import EventCardModal from "./eventCardModal";
 &nbsp;
-const CalendarItem = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> item, itemType }) =&gt; {</span>
-  // Format the date for display
-  const formatDate = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ate) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      return new Date(date).toLocaleString();</span>
-  };
-&nbsp;
-  const itemStyles = <span class="cstat-no" title="statement not covered" >{</span>
-    backgroundColor: item.color || '#FFFFFF',
-    border: '1px solid #E0E0E0',
-    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
-    borderRadius: '8px',
-    padding: '10px 15px',
-    margin: '10px 0',
-    cursor: 'pointer',
-    transition: 'box-shadow 0.3s ease'
-  };
+const EventCard = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>vent) =&gt; {</span>
+  const [open, setOpen] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
+  const handleOpen = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setOpen(true);</span></span>
+  const handleClose = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setOpen(false);</span></span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;div style={itemStyles}&gt;
-      &lt;h3 style={{ margin: '0', fontSize: '1rem', fontWeight: 'bold' }}&gt;{item.title}&lt;/h3&gt;
-      &lt;p style={{ margin: '5px 0 0', fontSize: '0.9rem' }}&gt;{itemType === 'event' ? `Time: ${formatDate(item.when.date)} at ${item.when.time}` : `Deadline: ${formatDate(item.deadline)}`}&lt;/p&gt;
-      {itemType === 'event' &amp;&amp; &lt;p style={{ margin: '5px 0', fontSize: '0.9rem' }}&gt;Location: {item.location || 'N/A'}&lt;/p&gt;}
-      &lt;p style={{ margin: '5px 0', fontSize: '0.9rem' }}&gt;Description: {item.description || 'No description'}&lt;/p&gt;
-      {itemType === 'task' &amp;&amp; (
-        &lt;&gt;
-          &lt;p style={{ margin: '5px 0', fontSize: '0.9rem' }}&gt;Max Time Block: {item.maxTimeBlock} minutes&lt;/p&gt;
-          &lt;p style={{ margin: '5px 0', fontSize: '0.9rem' }}&gt;Estimated Time to Completion: {item.estimatedTimeToCompletion} hours&lt;/p&gt;
-        &lt;/&gt;
-      )}
-    &lt;/div&gt;
+    &lt;Button
+      style={{
+        backgroundColor: event.color,
+        borderRadius: "5px",
+        height: "100%",
+        width: "109%",
+        alignContent: "center",
+        color: "white",
+        cursor: "pointer",
+        boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.1)",
+        padding: "5px",
+      }}
+    &gt;
+      &lt;Button
+        onClick={handleOpen}
+        style={{
+          backgroundColor: event.color,
+          height: "100%",
+          width: "100%",
+          color: "white",
+          cursor: "pointer",
+          fontSize: 10,
+        }}
+      &gt;
+        {event.name}
+      &lt;/Button&gt;
+      &lt;EventCardModal open={open} onClose={handleClose} event={event} /&gt;
+    &lt;/Button&gt;
   );
 };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >CalendarItem.propTypes = {</span>
-    item: PropTypes.object.isRequired,
-    itemType: PropTypes.oneOf(['event', 'task']).isRequired,
-};
-&nbsp;
-export default CalendarItem;
+export default EventCard;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -198,14 +198,14 @@ export default CalendarItem;
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
                 at 2023-12-15T06:11:33.341Z
             </div>
-        <script src="../../prettify.js"></script>
+        <script src="../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../sorter.js"></script>
-        <script src="../../block-navigation.js"></script>
+        <script src="../../../sorter.js"></script>
+        <script src="../../../block-navigation.js"></script>
     </body>
 </html>
     

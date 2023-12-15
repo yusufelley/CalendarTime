@@ -26,9 +26,13 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "test": ""
+    "test": "jest"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.6",
+    "@babel/preset-env": "^7.23.6",
+    "babel-jest": "^29.7.0",
+    "supertest": "^6.3.3",
     "winston": "^3.11.0"
   },
   "dependencies": {
@@ -38,5 +42,8 @@
     "mongoose": "^8.0.2",
     "morgan": "^1.10.0",
     "nodemon": "^3.0.1"
+  },
+  "babel": {
+    "presets": ["@babel/preset-env"]
   }
 }
