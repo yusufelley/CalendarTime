@@ -1,5 +1,6 @@
-import { Modal, Box, Typography } from "@mui/material";
+import { Modal, Box, Typography, Stack, TextField } from "@mui/material";
 import { DeleteButton } from "../deleteButton/deleteButton.jsx";
+import EventForm from "../create/EventForm.jsx";
 
 const EventCardModal = ({ open, onClose, event }) => {
   const style = {
@@ -9,10 +10,11 @@ const EventCardModal = ({ open, onClose, event }) => {
     transform: "translate(-50%, -50%)",
     width: 400,
     bgcolor: "background.paper",
-    border: "2px solid #000",
+    borderRadius: "1rem",
     boxShadow: 24,
     p: 4,
   };
+
   return (
     <Modal
       open={open}
@@ -21,16 +23,7 @@ const EventCardModal = ({ open, onClose, event }) => {
       aria-describedby={"modal-modal-description"}
     >
       <Box sx={style}>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          {event.name}
-        </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          {"Start: " + event.start.toLocaleString().substring(0, 21)}
-          <br />
-          {"End: " + event.end.toLocaleString().substring(0, 21)}
-          <br />
-          {event.description}
-        </Typography>
+        <EventForm event={event} />
         <DeleteButton type={"event"} id={event._id} closeModal={onClose} />
       </Box>
     </Modal>
