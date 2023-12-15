@@ -1,6 +1,7 @@
 # To Run Application
 
 npm i
+
 npm run dev
 
 # React + Vite
