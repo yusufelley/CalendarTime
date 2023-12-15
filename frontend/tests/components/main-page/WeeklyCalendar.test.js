@@ -23,6 +23,16 @@ jest.mock('react-week-calendar', () => {
     default: () => <div>Week Calendar</div>,
   };
 });
+jest.mock('@mui/material/Modal', () => () => <div>Mocked Modal</div>);
+
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    json: () => Promise.resolve([
+      // Your mock event data
+    ]),
+    ok: true,
+  })
+);
 
 describe('WeekCalendarDep', () => {
   it('renders correctly', () => {
@@ -42,6 +52,14 @@ describe('WeekCalendarDep', () => {
     const prevWeekButton = getByText('Previous Week');
     fireEvent.click(prevWeekButton);
     // Assertions to check if the week has changed to previous week
+  });
+  
+  it('opens and closes the modal on event click', () => {
+    render(<WeekCalendarDep />);
+    // Simulate clicking an event to open the modal
+    // Add assertions for the modal opening
+    // Simulate closing the modal
+    // Add assertions for the modal closing
   });
 
   // More tests here...

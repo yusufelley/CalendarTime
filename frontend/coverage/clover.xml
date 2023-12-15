@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1702574439555" clover="3.2.0">
-  <project timestamp="1702574439556" name="All files">
-    <metrics statements="137" coveredstatements="66" conditionals="62" coveredconditionals="18" methods="70" coveredmethods="27" elements="269" coveredelements="111" complexity="0" loc="137" ncloc="137" packages="4" files="18" classes="18"/>
+<coverage generated="1702618599938" clover="3.2.0">
+  <project timestamp="1702618599938" name="All files">
+    <metrics statements="219" coveredstatements="56" conditionals="100" coveredconditionals="18" methods="92" coveredmethods="22" elements="411" coveredelements="96" complexity="0" loc="219" ncloc="219" packages="6" files="24" classes="24"/>
     <package name="src">
-      <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <metrics statements="14" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
       <file name="App.jsx" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/App.jsx">
-        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+      </file>
+      <file name="EventContext.jsx" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/EventContext.jsx">
+        <metrics statements="9" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
       </file>
       <file name="config.js" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/config.js">
         <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -46,26 +59,46 @@
       </file>
     </package>
     <package name="src.components.create">
-      <metrics statements="45" coveredstatements="0" conditionals="30" coveredconditionals="0" methods="27" coveredmethods="0"/>
-      <file name="EventForm.jsx" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/components/create/EventForm.jsx">
-        <metrics statements="17" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="10" coveredmethods="0"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
+      <metrics statements="58" coveredstatements="0" conditionals="58" coveredconditionals="0" methods="27" coveredmethods="0"/>
+      <file name="ColorSelector.jsx" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/components/create/ColorSelector.jsx">
+        <metrics statements="11" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
+      </file>
+      <file name="EventForm.jsx" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/components/create/EventForm.jsx">
+        <metrics statements="23" coveredstatements="0" conditionals="32" coveredconditionals="0" methods="9" coveredmethods="0"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
+        <line num="35" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="36" count="0" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="44" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
         <line num="47" count="0" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
         <line num="60" count="0" type="stmt"/>
-        <line num="156" count="0" type="stmt"/>
-        <line num="158" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="178" count="0" type="stmt"/>
       </file>
       <file name="TaskEventContainer.jsx" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/components/create/TaskEventContainer.jsx">
         <metrics statements="5" coveredstatements="0" conditionals="16" coveredconditionals="0" methods="3" coveredmethods="0"/>
@@ -76,10 +109,9 @@
         <line num="53" count="0" type="stmt"/>
       </file>
       <file name="TaskForm.jsx" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/components/create/TaskForm.jsx">
-        <metrics statements="23" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="14" coveredmethods="0"/>
-        <line num="14" count="0" type="stmt"/>
+        <metrics statements="19" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="11" coveredmethods="0"/>
         <line num="15" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
@@ -97,33 +129,81 @@
         <line num="62" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="63" count="0" type="stmt"/>
         <line num="69" count="0" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="179" count="0" type="stmt"/>
-        <line num="181" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.deleteButton">
+      <metrics statements="16" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="5" coveredmethods="0"/>
+      <file name="deleteButton.jsx" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/components/deleteButton/deleteButton.jsx">
+        <metrics statements="16" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.eventCard">
+      <metrics statements="8" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <file name="EventCard.jsx" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/components/eventCard/EventCard.jsx">
+        <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+      </file>
+      <file name="EventCardModal.jsx" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/components/eventCard/EventCardModal.jsx">
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.components.main-page">
-      <metrics statements="76" coveredstatements="66" conditionals="20" coveredconditionals="18" methods="37" coveredmethods="27"/>
+      <metrics statements="111" coveredstatements="56" conditionals="26" coveredconditionals="18" methods="46" coveredmethods="22"/>
       <file name="CalendarGrid.jsx" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/components/main-page/CalendarGrid.jsx">
-        <metrics statements="18" coveredstatements="18" conditionals="6" coveredconditionals="6" methods="10" coveredmethods="10"/>
+        <metrics statements="16" coveredstatements="16" conditionals="6" coveredconditionals="6" methods="10" coveredmethods="10"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="5" type="stmt"/>
         <line num="15" count="120" type="stmt"/>
-        <line num="16" count="5" type="stmt"/>
-        <line num="18" count="5" type="stmt"/>
-        <line num="24" count="5" type="stmt"/>
-        <line num="25" count="1685" type="stmt"/>
-        <line num="27" count="3355" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="5" type="stmt"/>
+        <line num="23" count="5" type="stmt"/>
+        <line num="24" count="3355" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="5" type="stmt"/>
+        <line num="28" count="5" type="stmt"/>
         <line num="30" count="5" type="stmt"/>
-        <line num="32" count="5" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
         <line num="34" count="5" type="stmt"/>
-        <line num="35" count="2" type="stmt"/>
-        <line num="38" count="5" type="stmt"/>
-        <line num="42" count="1" type="stmt"/>
-        <line num="49" count="1" type="stmt"/>
-        <line num="63" count="35" type="stmt"/>
-        <line num="78" count="120" type="stmt"/>
-        <line num="85" count="840" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="59" count="35" type="stmt"/>
+        <line num="74" count="120" type="stmt"/>
+        <line num="81" count="840" type="stmt"/>
+      </file>
+      <file name="CheckableList.jsx" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/components/main-page/CheckableList.jsx">
+        <metrics statements="11" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
       </file>
       <file name="ContentGrid.jsx" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/components/main-page/ContentGrid.jsx">
         <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
@@ -137,12 +217,16 @@
         <line num="21" count="3" type="stmt"/>
       </file>
       <file name="Header.jsx" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/components/main-page/Header.jsx">
-        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="16" type="stmt"/>
-        <line num="13" count="16" type="stmt"/>
-        <line num="14" count="16" type="stmt"/>
-        <line num="16" count="16" type="stmt"/>
+        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="8" type="stmt"/>
+        <line num="28" count="8" type="stmt"/>
+        <line num="29" count="8" type="stmt"/>
+        <line num="30" count="8" type="stmt"/>
+        <line num="31" count="8" type="stmt"/>
+        <line num="32" count="8" type="stmt"/>
+        <line num="34" count="8" type="stmt"/>
       </file>
       <file name="LeftPanel.jsx" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/components/main-page/LeftPanel.jsx">
         <metrics statements="17" coveredstatements="15" conditionals="10" coveredconditionals="8" methods="9" coveredmethods="7"/>
@@ -182,27 +266,49 @@
         <line num="6" count="2" type="stmt"/>
       </file>
       <file name="WeeklyCalendar.jsx" path="/Users/aeyan/Documents/520/CalendarTime/frontend/src/components/main-page/WeeklyCalendar.jsx">
-        <metrics statements="20" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="5"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="55" count="3" type="stmt"/>
-        <line num="62" count="3" type="stmt"/>
-        <line num="63" count="3" type="stmt"/>
-        <line num="65" count="3" type="stmt"/>
-        <line num="66" count="1" type="stmt"/>
-        <line num="71" count="3" type="stmt"/>
-        <line num="72" count="1" type="stmt"/>
-        <line num="77" count="3" type="stmt"/>
+        <metrics statements="42" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="12" coveredmethods="0"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="61" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
         <line num="78" count="0" type="stmt"/>
-        <line num="84" count="3" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="84" count="0" type="stmt"/>
         <line num="85" count="0" type="stmt"/>
-        <line num="92" count="5" type="stmt"/>
-        <line num="94" count="5" type="stmt"/>
-        <line num="123" count="1" type="stmt"/>
-        <line num="124" count="0" type="stmt"/>
-        <line num="125" count="0" type="stmt"/>
-        <line num="126" count="0" type="stmt"/>
-        <line num="128" count="0" type="stmt"/>
-        <line num="140" count="0" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
       </file>
     </package>
   </project>
