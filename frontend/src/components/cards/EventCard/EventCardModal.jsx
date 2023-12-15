@@ -1,6 +1,6 @@
-import { Modal, Box, Typography, Stack, TextField } from "@mui/material";
-import { DeleteButton } from "../deleteButton/deleteButton.jsx";
-import EventForm from "../create/EventForm.jsx";
+import { Modal, Box } from "@mui/material";
+import { DeleteButton } from "../../buttons/DeleteButton/DeleteButton.jsx";
+import EventForm from "../../forms/EventForm.jsx";
 
 const EventCardModal = ({ open, onClose, event }) => {
   const style = {

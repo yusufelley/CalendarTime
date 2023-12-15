@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SERVER_URL } from "../../config.js";
+import { SERVER_URL } from "../../config/config.js";
 import {
   TextField,
   FormControl,
@@ -9,8 +9,8 @@ import {
   Stack,
   Chip,
 } from "@mui/material";
-import CustomDurationInput from "../CustomDurationInput";
-import ColorSelector from "./colorSelector.jsx";
+import CustomDurationInput from "../inputs/CustomDurationInput.jsx";
+import ColorSelector from "../inputs/ColorSelector.jsx";
 
 const TaskForm = () => {
   const [formData, setFormData] = useState({

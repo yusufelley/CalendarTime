@@ -2,12 +2,12 @@ import WeekCalendar from "react-week-calendar";
 import moment from "moment";
 import "react-week-calendar/dist/style.css";
 import "./WeekCalendar.css";
-import Header from "./Header";
-import { SERVER_URL } from "../../config.js";
+import Header from "../../components/Header/Header.jsx";
+import { SERVER_URL } from "../../config/config.js";
 import { useQuery } from "react-query";
 import { useState, useEffect } from "react";
 import { useEventContext } from "../../EventContext.jsx";
-import EventCard from "../eventCard/EventCard.jsx";
+import EventCard from "../../components/cards/EventCard/EventCard.jsx";
 
 const fetchEventsURL = `${SERVER_URL}/event`;
 

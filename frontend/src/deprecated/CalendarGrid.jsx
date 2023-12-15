@@ -13,6 +13,7 @@ const WeeklyCalendarGrid = () => {
   ];
 
   const hoursOfDay = Array.from({ length: 24 }, (_, index) => index);
+  console.log(hoursOfDay);
   // Example event data
   const events = [
     { day: "Monday", hour: 8, title: "Meeting 1" },

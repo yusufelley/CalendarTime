@@ -9,8 +9,8 @@ import {
   Chip,
   Typography,
 } from "@mui/material";
-import { SERVER_URL } from "../../config.js";
-import ColorSelector from "./colorSelector.jsx";
+import { SERVER_URL } from "../../config/config.js";
+import ColorSelector from "../inputs/ColorSelector.jsx";
 import moment from "moment";
 import { useEventContext } from "../../EventContext.jsx";
 

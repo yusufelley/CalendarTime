@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@mui/material";
-import EventCardModal from "./eventCardModal";
+import EventCardModal from "./EventCardModal.jsx";
 
 const EventCard = (event) => {
   const [open, setOpen] = useState(false);

@@ -1,6 +1,6 @@
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { SERVER_URL } from "../../config.js";
+import { SERVER_URL } from "../../../config/config.js";
 
 export const DeleteButton = ({ type, id, closeModal }) => {
   const generateURL = () => {

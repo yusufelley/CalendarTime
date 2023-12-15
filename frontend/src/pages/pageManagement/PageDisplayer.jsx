@@ -1,9 +1,9 @@
-import React from "react";
-import WeekCalendar from "./WeeklyCalendar.jsx";
-import Settings from "./Settings.jsx";
-import ToDoList from "./ToDoList.jsx";
+import WeekCalendar from "../WeeklyCalendarPage/WeeklyCalendar.jsx";
+import Settings from "../SettingsPage/Settings.jsx";
+import ToDoList from "../ToDoListPage/ToDoList.jsx";
 
-const ContentGrid = ({ selectedPage = 2 }) => {
+// Responsible for displaying the selected page
+const PageDisplayer = ({ selectedPage = 2 }) => {
   let componentToRender;
 
   switch (selectedPage) {
@@ -14,11 +14,10 @@ const ContentGrid = ({ selectedPage = 2 }) => {
       componentToRender = <Settings />;
       break;
     default:
-      // componentToRender = <WeeklyCalendarGrid />;
       componentToRender = <WeekCalendar />;
   }
 
   return <div className="content-grid">{componentToRender}</div>;
 };
 
-export default ContentGrid;
+export default PageDisplayer;

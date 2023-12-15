@@ -1,9 +1,7 @@
-// LeftPanel.js
-import React, { useState, useEffect } from "react";
-import SmallCalendar from "./SmallCalendar.jsx";
-// import "react-calendar/dist/Calendar.css";
+import { useState, useEffect } from "react";
+// import SmallCalendar from "../../deprecated/SmallCalendar.jsx";
 
-const LeftPanel = ({ selectedPage, setSelectedPage }) => {
+const PageSelector = ({ selectedPage, setSelectedPage }) => {
   const [isMonthlyCalendarOpen, setIsMonthlyCalendarOpen] = useState(false);
 
   const handleMonthlyCalendarClick = () => {
@@ -88,12 +86,10 @@ const LeftPanel = ({ selectedPage, setSelectedPage }) => {
         </button>
       </div>
       {isMonthlyCalendarOpen && (
-        <div className="monthly-calendar-popup">
-          <SmallCalendar />
-        </div>
+        <div className="monthly-calendar-popup">{/* <SmallCalendar /> */}</div>
       )}
     </div>
   );
 };
 
-export default LeftPanel;
+export default PageSelector;
