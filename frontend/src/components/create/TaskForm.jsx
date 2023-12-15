@@ -10,6 +10,7 @@ import {
   Chip,
 } from "@mui/material";
 import CustomDurationInput from "../CustomDurationInput";
+import ColorSelector from "./colorSelector.jsx";
 
 const TaskForm = () => {
   const [formData, setFormData] = useState({
@@ -26,7 +27,6 @@ const TaskForm = () => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    console.log(name, value, type, checked);
     setFormData((prevData) => ({
       ...prevData,
       [name]: type === "checkbox" ? checked : value,
@@ -66,17 +66,8 @@ const TaskForm = () => {
     }));
   };
 
-  const colors = [
-    "#3498DB",
-    "#27AE60",
-    "#E74C3C",
-    "#F1C40F",
-    "#9B59B6",
-    "#E67E22",
-  ];
-
   return (
-    <Stack component="form" onSubmit={handleSubmit} spacing={2} mt={2}>
+    <Stack component="form" onSubmit={handleSubmit} spacing={2}>
       <TextField
         label="Task Name"
         name="name"
@@ -174,22 +165,7 @@ const TaskForm = () => {
         display={"flex"}
         justifyContent={"space-between"}
       >
-        <Stack direction={"row"} spacing={"0.5rem"}>
-          {colors.map((color, index) => (
-            <Chip
-              onClick={() =>
-                setFormData((prevData) => ({ ...prevData, color }))
-              }
-              key={index}
-              sx={{
-                backgroundColor: color,
-                borderRadius: "100%",
-                height: formData.color == color ? "1.75rem" : "1.5rem",
-                width: formData.color == color ? "1.75rem" : "1.5rem",
-              }}
-            />
-          ))}
-        </Stack>
+        <ColorSelector handleChange={handleChange} />
 
         <Button
           type="submit"

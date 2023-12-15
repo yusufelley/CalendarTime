@@ -7,26 +7,33 @@ import {
   Button,
   Stack,
   Chip,
+  Typography,
 } from "@mui/material";
 import { SERVER_URL } from "../../config.js";
+import ColorSelector from "./colorSelector.jsx";
+import moment from "moment";
 import { useEventContext } from "../../EventContext.jsx";
 
-const EventForm = () => {
+const EventForm = ({ event }) => {
+  const [disable, setDisable] = useState(event ? true : false);
+  
   const { triggerEventFetch } = useEventContext();
-
+  
   const [formData, setFormData] = useState({
-    name: "",
-    repeating: false,
-    date: "",
-    startTime: "",
-    endTime: "",
-    location: "",
-    description: "",
-    color: undefined,
+    name: event?.name || "",
+    repeating: event?.repeating || false,
+    // using moment here to translate ISODateString to date that can be used by MUI
+    date: moment(event?.date).format("YYYY-MM-DD") || "",
+    startTime: event?.startTime || "",
+    endTime: event?.endTime || "",
+    location: event?.location || "",
+    description: event?.description || "",
+    color: event?.color || undefined,
   });
 
 
   const handleChange = (e) => {
+    if (disable) return;
     const { name, value, type, checked } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -35,6 +42,7 @@ const EventForm = () => {
   };
 
   const handleSubmit = (e) => {
+    if (disable) return;
     e.preventDefault();
     const createEventURL = `${SERVER_URL}/event`;
     console.log(`sending event data to ${createEventURL}`, formData);
@@ -54,40 +62,47 @@ const EventForm = () => {
 
   };
 
-  const colors = [
-    "#27AE60",
-    "#E74C3C",
-    "#3498DB",
-    "#F1C40F",
-    "#9B59B6",
-    "#E67E22",
-  ];
+  const handleUpdateEvent = () => {
+    const updateEventURL = `${SERVER_URL}/event/${event._id}`;
+
+    fetch(updateEventURL, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+  };
 
   return (
-    <Stack component="form" onSubmit={handleSubmit} spacing={2} mt={2}>
-      <Stack direction={"row"} spacing={"1rem"}>
-        <TextField
-          label="Event Name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          fullWidth
-          margin="normal"
-        />
-
-        <FormControl>
-          <FormControlLabel
-            control={
-              <Checkbox
-                name="repeating"
-                checked={formData.repeating}
-                onChange={handleChange}
-              />
-            }
-            label="Repeats"
+    <Stack component="form" onSubmit={handleSubmit} spacing={2}>
+      {disable ? (
+        <Typography variant="h4">{event.name}</Typography>
+      ) : (
+        <Stack direction={"row"} spacing={"1rem"}>
+          <TextField
+            label="Event Name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
           />
-        </FormControl>
-      </Stack>
+
+          <FormControl>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  name="repeating"
+                  checked={formData.repeating}
+                  onChange={handleChange}
+                />
+              }
+              label="Repeats"
+            />
+          </FormControl>
+        </Stack>
+      )}
 
       <Stack direction={"row"} spacing={3}>
         <TextField
@@ -157,30 +172,27 @@ const EventForm = () => {
         display={"flex"}
         justifyContent={"space-between"}
       >
-        <Stack direction={"row"} spacing={"0.5rem"}>
-          {colors.map((color, index) => (
-            <Chip
-              onClick={() =>
-                setFormData((prevData) => ({ ...prevData, color }))
-              }
-              key={index}
-              sx={{
-                backgroundColor: color,
-                borderRadius: "100%",
-                height: formData.color == color ? "1.75rem" : "1.5rem",
-                width: formData.color == color ? "1.75rem" : "1.5rem",
-              }}
-            />
-          ))}
-        </Stack>
+        <ColorSelector handleChange={handleChange} disable={disable} />
 
-        <Button
-          type="submit"
-          variant="contained"
-          sx={{ backgroundColor: "#F76E72" }}
-        >
-          Create
-        </Button>
+        {disable ? (
+          <Button
+            onClick={() => {
+              setDisable(false);
+            }}
+            variant="contained"
+            sx={{ backgroundColor: "#F76E72" }}
+          >
+            Edit
+          </Button>
+        ) : (
+          <Button
+            onClick={event ? handleUpdateEvent : handleSubmit}
+            variant="contained"
+            sx={{ backgroundColor: "#F76E72" }}
+          >
+            {event ? "Update" : "Create"}
+          </Button>
+        )}
       </Stack>
     </Stack>
   );

@@ -60,6 +60,26 @@ eventRouter.delete("/:id", getEvent, async (req, res) => {
   }
 });
 
+// UPDATE a event
+eventRouter.put("/:id", getEvent, async (req, res) => {
+  const updatedEvent = req.body;
+  try {
+    const result = await Event.findOneAndUpdate(
+      { _id: req.params.id },
+      updatedEvent,
+      { new: true }
+    );
+
+    if (!result) {
+      return res.status(404).json({ message: "Event not found" });
+    }
+
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 // Middleware to get a event object by ID
 export async function getEvent(req, res, next) {
   let event;

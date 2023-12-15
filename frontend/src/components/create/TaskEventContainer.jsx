@@ -58,7 +58,7 @@ const TaskEventContainer = () => {
         </ButtonGroup>
       </Box>
 
-      <Typography mt={2} variant="h3" fontWeight={500} align="left">
+      <Typography mt={2} mb={2} variant="h3" fontWeight={500} align="left">
         {isEvent ? "New Event" : "New Task"}
       </Typography>
       {isEvent ? <EventForm /> : <TaskForm />}
