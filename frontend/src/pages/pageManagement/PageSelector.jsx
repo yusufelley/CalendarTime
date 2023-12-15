@@ -37,7 +37,7 @@ const PageSelector = ({ selectedPage, setSelectedPage }) => {
             <img src="https://picsum.photos/200/300" alt="User Profile" />
           </div>
           <div className="user-details">
-            <medium>Hi</medium>
+            <span>Hi</span>
             <span>John</span>
           </div>
         </button>

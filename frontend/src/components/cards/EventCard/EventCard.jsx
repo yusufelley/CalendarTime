@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "@mui/material";
+import { Button, Box } from "@mui/material";
 import EventCardModal from "./EventCardModal.jsx";
 
 const EventCard = (event) => {
@@ -8,7 +8,7 @@ const EventCard = (event) => {
   const handleClose = () => setOpen(false);
 
   return (
-    <Button
+    <Box
       style={{
         backgroundColor: event.color,
         borderRadius: "5px",
@@ -35,7 +35,7 @@ const EventCard = (event) => {
         {event.name}
       </Button>
       <EventCardModal open={open} onClose={handleClose} event={event} />
-    </Button>
+    </Box>
   );
 };
 
