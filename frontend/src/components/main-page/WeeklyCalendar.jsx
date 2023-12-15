@@ -13,6 +13,12 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { fontSize } from "@mui/system";
 import { SERVER_URL } from "../../config.js";
+import { useQuery } from 'react-query';
+import { useState, useEffect } from "react";
+import { useEventContext } from '../../EventContext.jsx';
+
+
+
 import { DeleteButton } from "../deleteButton/deleteButton.jsx";
 import EventCardModal from "../eventCard/eventCardModal.jsx";
 
@@ -90,73 +96,68 @@ const fetchEvents = async () => {
   }
 };
 
-class WeekCalendarDep extends PureComponent {
-  componentDidMount() {
-    fetchEvents()
-      .then((eventsData) => {
-        // Update the state with the fetched events
-        this.setState({ selectedIntervals: eventsData });
-      })
-      .catch((error) => {
-        console.error("Error fetching events:", error);
-      });
-  }
 
-  state = {
-    firstDay: moment(),
-    // selectedIntervals: selectedEvents,
-    selectedIntervals: [],
-    showModal: false,
-    modalEvent: null,
-  };
+// class WeekCalendarDep extends PureComponent {
+  const WeekCalendarDep = () => {
+    const [firstDay, setFirstDay] = useState(moment());
+    const [selectedIntervals, setSelectedIntervals] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [modalEvent, setModalEvent] = useState(null);
 
-  startTime = moment().hour(0);
-  endTime = moment().hour(23);
-
-  goToNextWeek = () => {
-    this.setState(() => ({
-      firstDay: this.state.firstDay.clone().add(7, "days"),
-    }));
-  };
-
-  goToPreviousWeek = () => {
-    this.setState(() => ({
-      firstDay: this.state.firstDay.clone().subtract(7, "days"),
-    }));
-  };
-
-  onEventClick = (event) => {
-    this.setState({
-      showModal: true,
-      modalEvent: event,
+    const { data: events, refetch } = useQuery('events', fetchEvents, {
+      onSuccess: (data) => {
+        setSelectedIntervals(data);
+      }
     });
+
+    const { triggerFetch, resetTriggerFetch } = useEventContext();
+
+    useEffect(() => {
+      if (triggerFetch) {
+        refetch();
+        resetTriggerFetch();
+      }
+    }, [triggerFetch, refetch, resetTriggerFetch]);
+    
+
+    console.log("Selected Intervals: ", selectedIntervals);
+
+  const startTime = moment().hour(0);
+  const endTime = moment().hour(23);
+
+  const goToNextWeek = () => {
+    setFirstDay(prevDay => prevDay.clone().add(7, "days"));
   };
 
-  closeModal = () => {
-    this.setState({
-      showModal: false,
-      modalEvent: null,
-    });
+  const goToPreviousWeek = () => {
+    setFirstDay(prevDay => prevDay.clone().subtract(7, "days"));
   };
 
-  render() {
-    const { showModal, modalEvent } = this.state;
+  const onEventClick = (event) => {
+    setShowModal(true);
+    setModalEvent(event);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setModalEvent(null);
+  };
 
     return (
       <div>
         <Header
-          goToNextWeek={this.goToNextWeek}
-          goToPreviousWeek={this.goToPreviousWeek}
+          goToNextWeek={goToNextWeek} // Use the function directly
+          goToPreviousWeek={goToPreviousWeek} // Use the function directly
         />
         <WeekCalendar
           timeFormat={"h:mm a"}
-          firstDay={this.state.firstDay}
-          startTime={this.startTime}
-          endTime={this.endTime}
+          firstDay={firstDay} // Use the state variable
+          startTime={startTime}
+          endTime={endTime}
           scaleUnit={60}
           eventSpacing={15}
-          selectedIntervals={this.state.selectedIntervals}
-          onEventClick={this.onEventClick}
+          selectedIntervals={selectedIntervals} // Use the state variable
+          onEventClick={onEventClick} // Use the function directly
           eventComponent={EventComponent}
           useModal={false}
           cellHeight={40}
@@ -164,11 +165,10 @@ class WeekCalendarDep extends PureComponent {
           className="week-calendar"
         />
         {/* {showModal && modalEvent && (
-          <EventModal event={modalEvent} onClose={this.closeModal} />
+          <EventModal event={modalEvent} onClose={closeModal} />
         )} */}
       </div>
     );
-  }
 }
 
 const EventComponent = (props) => {
@@ -220,5 +220,4 @@ const EventComponent = (props) => {
     </Button>
   );
 };
-
 export default WeekCalendarDep;

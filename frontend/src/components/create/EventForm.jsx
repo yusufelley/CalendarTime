@@ -12,10 +12,13 @@ import {
 import { SERVER_URL } from "../../config.js";
 import ColorSelector from "./colorSelector.jsx";
 import moment from "moment";
+import { useEventContext } from "../../EventContext.jsx";
 
 const EventForm = ({ event }) => {
   const [disable, setDisable] = useState(event ? true : false);
-
+  
+  const { triggerEventFetch } = useEventContext();
+  
   const [formData, setFormData] = useState({
     name: event?.name || "",
     repeating: event?.repeating || false,
@@ -27,6 +30,7 @@ const EventForm = ({ event }) => {
     description: event?.description || "",
     color: event?.color || undefined,
   });
+
 
   const handleChange = (e) => {
     if (disable) return;
@@ -54,6 +58,8 @@ const EventForm = ({ event }) => {
       .catch((err) =>
         console.error(`An error has occured posting to ${createEventURL}`, err)
       );
+      triggerEventFetch(); // Trigger event refetch after form submission
+
   };
 
   const handleUpdateEvent = () => {
