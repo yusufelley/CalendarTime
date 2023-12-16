@@ -70,6 +70,8 @@ const EventForm = ({ event }) => {
       },
       body: JSON.stringify(formData),
     });
+    console.log("fetched")
+    triggerEventFetch(); // Trigger event refetch after form submission
   };
 
   return (

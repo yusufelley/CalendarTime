@@ -9,6 +9,7 @@ export const EventProvider = ({ children }) => {
   const [triggerFetch, setTriggerFetch] = useState(false);
 
   const triggerEventFetch = () => {
+    console.log("TriggerEventFetched");
     setTriggerFetch(true);
   };
 
