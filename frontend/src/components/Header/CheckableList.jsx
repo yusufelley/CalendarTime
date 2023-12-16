@@ -1,39 +1,101 @@
 import React, { useState } from "react";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
+import Checkbox from "@mui/material/Checkbox";
 
 const CheckableList = () => {
-  const [checkedItems, setCheckedItems] = useState([]);
-  const items = ["Take out trash", "Clean Room", "Study for Finals", "Relax"];
+  const [tasks, setTasks] = useState([
+    { id: 1, text: "Buy groceries", completed: false },
+    { id: 2, text: "Call the doctor", completed: false },
+    { id: 3, text: "Finish React project", completed: false },
+  ]);
+  const [newTodo, setNewTodo] = useState("");
 
-  const handleCheckboxChange = (item) => {
-    const isChecked = checkedItems.includes(item);
-    if (isChecked) {
-      setCheckedItems(
-        checkedItems.filter((checkedItem) => checkedItem !== item)
-      );
-    } else {
-      setCheckedItems([...checkedItems, item]);
-    }
+  const addTodo = (event) => {
+    event.preventDefault();
+    if (!newTodo) return;
+    setTasks([...tasks, { id: Date.now(), text: newTodo, completed: false }]);
+    setNewTodo("");
+  };
+
+  const toggleComplete = (id) => {
+    setTasks(
+      tasks.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, completed: !todo.completed };
+        }
+        return todo;
+      })
+    );
+  };
+
+  const deleteTodo = (id) => {
+    setTasks(tasks.filter((todo) => todo.id !== id));
   };
 
   return (
     <div>
-      <h2>To-do</h2>
-      <ul style={{ listStyleType: "none", padding: 0 }}>
-        {items.map((item, index) => (
-          <li key={index} style={{ marginBottom: "8px" }}>
-            <label style={{ display: "flex", alignItems: "center" }}>
-              <input
-                type="checkbox"
-                value={item}
-                checked={checkedItems.includes(item)}
-                onChange={() => handleCheckboxChange(item)}
-                style={{ marginRight: "4px" }}
-              />
-              {item}
-            </label>
-          </li>
+      <form
+        onSubmit={addTodo}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "10px",
+          padding: "20px",
+        }}
+      >
+        <TextField
+          label="New Task"
+          variant="outlined"
+          size="small"
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
+          fullWidth
+        />
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          sx={{ backgroundColor: "#F76E72" }}
+        >
+          Add
+        </Button>
+      </form>
+
+      <List>
+        {tasks.map((todo) => (
+          <ListItem
+            key={todo.id}
+            secondaryAction={
+              <IconButton
+                edge="end"
+                aria-label="delete"
+                onClick={() => deleteTodo(todo.id)}
+              >
+                <DeleteIcon />
+              </IconButton>
+            }
+            disablePadding
+          >
+            <Checkbox
+              checked={todo.completed}
+              onChange={() => toggleComplete(todo.id)}
+              color="primary"
+            />
+            <ListItemText
+              primary={todo.text}
+              style={{
+                textDecoration: todo.completed ? "line-through" : "none",
+              }}
+            />
+          </ListItem>
         ))}
-      </ul>
+      </List>
     </div>
   );
 };
