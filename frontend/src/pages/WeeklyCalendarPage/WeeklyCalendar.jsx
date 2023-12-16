@@ -89,7 +89,7 @@ const WeekCalendarDep = () => {
   return (
     <div>
       <Header
-        month={firstDay.format("MMMM")}
+        month={firstDay.format("MMMM YYYY")}
         goToNextWeek={goToNextWeek}
         goToPreviousWeek={goToPreviousWeek}
       />
