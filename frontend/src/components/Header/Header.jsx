@@ -3,6 +3,7 @@ import { Modal, Box, Button } from "@mui/material";
 import TaskEventContainer from "../forms/TaskEventContainer.jsx";
 import Typography from "@mui/material/Typography";
 import CheckableList from "./CheckableList.jsx";
+
 import ArrowRight from "@material-ui/icons/ArrowForwardIos";
 import ArrowLeft from "@material-ui/icons/ArrowBackIos";
 
@@ -18,14 +19,13 @@ const readMoreStyle = {
   p: 4,
 };
 
-
 const Header = ({ month, goToPreviousWeek, goToNextWeek }) => {
   // State to manage the Create Event/Task modal
+
   const [openCreate, setOpenCreate] = useState(false);
+
   const handleOpenCreate = () => setOpenCreate(true);
   const handleCloseCreate = () => setOpenCreate(false);
-
-  // State to manage the Read More modal
   const [openRead, setOpenRead] = React.useState(false);
   const handleOpenRead = () => setOpenRead(true);
   const handleCloseRead = () => setOpenRead(false);
@@ -106,3 +106,4 @@ const Header = ({ month, goToPreviousWeek, goToNextWeek }) => {
 };
 
 export default Header;
+// Header.js

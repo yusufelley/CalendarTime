@@ -4,7 +4,6 @@ import TaskForm from "./TaskForm";
 import EventForm from "./EventForm";
 
 const TaskEventContainer = () => {
-  // State to toggle between event and task forms
   const [isEvent, setIsEvent] = useState(false);
 
   return (
@@ -17,7 +16,6 @@ const TaskEventContainer = () => {
         borderRadius: "1rem",
       }}
     >
-      {/* Container heading */}
       <Typography>Add an event or task</Typography>
       <Box
         mt={2}
@@ -32,7 +30,6 @@ const TaskEventContainer = () => {
           borderRadius: "3rem",
         }}
       >
-        {/* Toggle buttons for event and task */}
         <ButtonGroup>
           <Button
             sx={{
@@ -61,12 +58,9 @@ const TaskEventContainer = () => {
         </ButtonGroup>
       </Box>
 
-      {/* Form heading */}
       <Typography mt={2} mb={2} variant="h3" fontWeight={500} align="left">
         {isEvent ? "New Event" : "New Task"}
       </Typography>
-      
-      {/* Render either EventForm or TaskForm based on isEvent */}
       {isEvent ? <EventForm /> : <TaskForm />}
     </Box>
   );

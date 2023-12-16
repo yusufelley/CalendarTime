@@ -4,7 +4,6 @@ import { Stack, Chip } from "@mui/material";
 const ColorSelector = ({ handleChange, disable, color }) => {
   const [selectedColor, setSelectedColor] = useState(color);
 
-  // List of colors user can choose from
   const colors = [
     "#27AE60",
     "#E74C3C",
@@ -14,7 +13,6 @@ const ColorSelector = ({ handleChange, disable, color }) => {
     "#E67E22",
   ];
 
-  // Handle user selection of colors
   const handleSelect = (color) => {
     if (disable) return;
     setSelectedColor(color);

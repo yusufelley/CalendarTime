@@ -95,6 +95,7 @@ const fetchEvents = async () => {
 };
 
 
+// class WeekCalendarDep extends PureComponent {
   const WeekCalendarDep = () => {
     const [firstDay, setFirstDay] = useState(moment());
     const [selectedIntervals, setSelectedIntervals] = useState([]);

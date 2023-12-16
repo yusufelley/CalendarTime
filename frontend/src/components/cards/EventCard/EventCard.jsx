@@ -4,19 +4,12 @@ import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
 
 import EventCardModal from "./EventCardModal.jsx";
 
-// The EventCard component displays an individual event card.
 const EventCard = (event) => {
-  // State to manage the open status of the modal
   const [open, setOpen] = useState(false);
-
-  // Function to open the modal
   const handleOpen = () => setOpen(true);
-
-  // Function to close the modal
   const handleClose = () => setOpen(false);
 
   return (
-    // The main container for the event card
     <Box
       style={{
         backgroundColor: event.color,
@@ -30,7 +23,6 @@ const EventCard = (event) => {
         padding: "5px",
       }}
     >
-      {/* Button to open the modal */}
       <Button
         onClick={handleOpen}
         style={{
@@ -42,9 +34,7 @@ const EventCard = (event) => {
           fontSize: 10,
         }}
       >
-        {/* Stack to arrange contents vertically */}
         <Stack>
-          {/* Conditionally display the priority chip if priority is not low */}
           {event.priority !== "low" && (
             <Chip
               icon={event.priority === "high" && <PriorityHighIcon />}
@@ -60,13 +50,11 @@ const EventCard = (event) => {
               variant="outlined"
             />
           )}
-          {/* Event name */}
           <Typography variant="subtitle1" component="div">
             {event.name}
           </Typography>
         </Stack>
       </Button>
-      {/* Modal to display event details */}
       <EventCardModal open={open} onClose={handleClose} event={event} />
     </Box>
   );
