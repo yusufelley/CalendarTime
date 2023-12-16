@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from "react";
 // import SmallCalendar from "../../deprecated/SmallCalendar.jsx";
 
@@ -91,5 +92,4 @@ const PageSelector = ({ selectedPage, setSelectedPage }) => {
     </div>
   );
 };
-
 export default PageSelector;

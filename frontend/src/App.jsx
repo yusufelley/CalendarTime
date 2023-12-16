@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from "react";
 import PageSelector from "./pages/pageManagement/PageSelector.jsx";
 import PageDisplayer from "./pages/pageManagement/PageDisplayer.jsx";

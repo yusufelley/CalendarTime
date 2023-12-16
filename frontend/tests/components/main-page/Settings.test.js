@@ -2,10 +2,10 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Settings from '../../../src/components/main-page/Settings';
+import Settings from '../../../src/pages/SettingsPage/Settings';
 
 // Mock the Header component
-jest.mock('../../../src/components/main-page/Header', () => {
+jest.mock('../../../src/components/Header/Header', () => {
   return {
     __esModule: true,
     default: () => <div>Mocked Header</div>,

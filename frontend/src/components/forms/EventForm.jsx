@@ -6,13 +6,13 @@ import {
   Checkbox,
   Button,
   Stack,
-  Chip,
   Typography,
 } from "@mui/material";
 import { SERVER_URL } from "../../config/config.js";
 import ColorSelector from "../inputs/ColorSelector.jsx";
 import moment from "moment";
 import { useEventContext } from "../../EventContext.jsx";
+import PrioritySelector from "../inputs/PrioritySelector.jsx";
 
 const EventForm = ({ event }) => {
   const [disable, setDisable] = useState(event ? true : false);
@@ -28,12 +28,14 @@ const EventForm = ({ event }) => {
     endTime: event?.endTime || "",
     location: event?.location || "",
     description: event?.description || "",
-    color: event?.color || undefined,
+    color: event?.color || "",
+    priority: event?.priority || "low",
   });
 
   const handleChange = (e) => {
     if (disable) return;
     const { name, value, type, checked } = e.target;
+    console.log(name, value, type, checked);
     setFormData((prevData) => ({
       ...prevData,
       [name]: type === "checkbox" ? checked : value,
@@ -155,6 +157,11 @@ const EventForm = ({ event }) => {
           }}
         />
       </Stack>
+      <PrioritySelector
+        onSelect={handleChange}
+        disable={disable}
+        selectedPriority={event?.priority}
+      />
 
       <TextField
         label="Description"
@@ -172,7 +179,11 @@ const EventForm = ({ event }) => {
         display={"flex"}
         justifyContent={"space-between"}
       >
-        <ColorSelector handleChange={handleChange} disable={disable} />
+        <ColorSelector
+          handleChange={handleChange}
+          disable={disable}
+          color={event?.color}
+        />
 
         {disable ? (
           <Button

@@ -2,14 +2,14 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import WeekCalendarDep from '../../../src/components/main-page/WeeklyCalendar';
+import WeekCalendarDep from '../../../src/pages/WeeklyCalendarPage/WeeklyCalendar';
 import { useQuery } from 'react-query';
 import { useEventContext } from '../../../src/EventContext';
 
 // Mock child components and dependencies
 jest.mock('react-week-calendar', () => () => <div>Mocked WeekCalendar</div>);
-jest.mock('../../../src/components/main-page/Header', () => () => <div>Mocked Header</div>);
-jest.mock('../../../src/components/eventCard/EventCard', () => () => <div>Mocked EventCard</div>);
+jest.mock('../../../src/components/Header/Header', () => () => <div>Mocked Header</div>);
+jest.mock('../../../src/components/cards/EventCard/EventCard', () => () => <div>Mocked EventCard</div>);
 
 // Mock react-query and EventContext
 jest.mock('react-query', () => ({

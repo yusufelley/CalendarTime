@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>9/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -108,15 +108,13 @@
 <a name='L43'></a><a href='#L43'>43</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -125,9 +123,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -141,7 +139,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -150,14 +150,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
 import PropTypes from 'prop-types';
 &nbsp;
-const CalendarItem = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> item, itemType }) =&gt; {</span>
+const CalendarItem = ({ item, itemType }) =&gt; {
   // Format the date for display
-  const formatDate = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ate) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      return new Date(date).toLocaleString();</span>
+  const formatDate = (date) =&gt; {
+      return new Date(date).toLocaleString();
   };
 &nbsp;
-  const itemStyles = <span class="cstat-no" title="statement not covered" >{</span>
-    backgroundColor: item.color || '#FFFFFF',
+  const itemStyles = {
+    backgroundColor: item.color || <span class="branch-1 cbranch-no" title="branch not covered" >'#FFFFFF',</span>
     border: '1px solid #E0E0E0',
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
     borderRadius: '8px',
@@ -167,12 +167,12 @@ const CalendarItem = <span class="cstat-no" title="statement not covered" ><span
     transition: 'box-shadow 0.3s ease'
   };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;div style={itemStyles}&gt;
       &lt;h3 style={{ margin: '0', fontSize: '1rem', fontWeight: 'bold' }}&gt;{item.title}&lt;/h3&gt;
       &lt;p style={{ margin: '5px 0 0', fontSize: '0.9rem' }}&gt;{itemType === 'event' ? `Time: ${formatDate(item.when.date)} at ${item.when.time}` : `Deadline: ${formatDate(item.deadline)}`}&lt;/p&gt;
-      {itemType === 'event' &amp;&amp; &lt;p style={{ margin: '5px 0', fontSize: '0.9rem' }}&gt;Location: {item.location || 'N/A'}&lt;/p&gt;}
-      &lt;p style={{ margin: '5px 0', fontSize: '0.9rem' }}&gt;Description: {item.description || 'No description'}&lt;/p&gt;
+      {itemType === 'event' &amp;&amp; &lt;p style={{ margin: '5px 0', fontSize: '0.9rem' }}&gt;Location: {item.location || <span class="branch-1 cbranch-no" title="branch not covered" >'N/A'}</span>&lt;/p&gt;}
+      &lt;p style={{ margin: '5px 0', fontSize: '0.9rem' }}&gt;Description: {item.description || <span class="branch-1 cbranch-no" title="branch not covered" >'No description'}</span>&lt;/p&gt;
       {itemType === 'task' &amp;&amp; (
         &lt;&gt;
           &lt;p style={{ margin: '5px 0', fontSize: '0.9rem' }}&gt;Max Time Block: {item.maxTimeBlock} minutes&lt;/p&gt;
@@ -183,7 +183,7 @@ const CalendarItem = <span class="cstat-no" title="statement not covered" ><span
   );
 };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >CalendarItem.propTypes = {</span>
+CalendarItem.propTypes = {
     item: PropTypes.object.isRequired,
     itemType: PropTypes.oneOf(['event', 'task']).isRequired,
 };
@@ -196,7 +196,7 @@ export default CalendarItem;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-15T07:43:36.623Z
+                at 2023-12-16T00:11:12.557Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -1,3 +1,4 @@
+import React from 'react';
 import WeekCalendar from "../WeeklyCalendarPage/WeeklyCalendar.jsx";
 import Settings from "../SettingsPage/Settings.jsx";
 import ToDoList from "../ToDoListPage/ToDoList.jsx";
