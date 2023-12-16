@@ -9,6 +9,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Checkbox from "@mui/material/Checkbox";
 
 const CheckableList = () => {
+  // State to manage checked items
   const [tasks, setTasks] = useState([
     { id: 1, text: "Buy groceries", completed: false },
     { id: 2, text: "Call the doctor", completed: false },

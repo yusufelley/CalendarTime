@@ -8,21 +8,21 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { SERVER_URL } from "../../config/config.js";
-import ColorSelector from "../inputs/ColorSelector.jsx";
-import moment from "moment";
-import { useEventContext } from "../../EventContext.jsx";
-import PrioritySelector from "../inputs/PrioritySelector.jsx";
+import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
+
+import EventCardModal from "./EventCardModal.jsx";
 
 const EventForm = ({ event }) => {
+  // State to manage the edit mode
   const [disable, setDisable] = useState(event ? true : false);
 
+  // Context to trigger event fetching
   const { triggerEventFetch } = useEventContext();
 
+  // State to manage form data
   const [formData, setFormData] = useState({
     name: event?.name || "",
     repeating: event?.repeating || false,
-    // using moment here to translate ISODateString to date that can be used by MUI
     date: moment(event?.date).utc().format("YYYY-MM-DD") || "",
     startTime: event?.startTime || "",
     endTime: event?.endTime || "",
@@ -32,21 +32,21 @@ const EventForm = ({ event }) => {
     priority: event?.priority || "low",
   });
 
+  // Handle form input changes
   const handleChange = (e) => {
     if (disable) return;
     const { name, value, type, checked } = e.target;
-    console.log(name, value, type, checked);
     setFormData((prevData) => ({
       ...prevData,
       [name]: type === "checkbox" ? checked : value,
     }));
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     if (disable) return;
     e.preventDefault();
     const createEventURL = `${SERVER_URL}/event`;
-    console.log(`sending event data to ${createEventURL}`, formData);
     fetch(createEventURL, {
       method: "POST",
       headers: {
@@ -57,14 +57,14 @@ const EventForm = ({ event }) => {
       .then((response) => response.json())
       .then((data) => console.log(`${createEventURL} responded with`, data))
       .catch((err) =>
-        console.error(`An error has occured posting to ${createEventURL}`, err)
+        console.error(`An error has occurred posting to ${createEventURL}`, err)
       );
     triggerEventFetch(); // Trigger event refetch after form submission
   };
 
+  // Handle updating an existing event
   const handleUpdateEvent = () => {
     const updateEventURL = `${SERVER_URL}/event/${event._id}`;
-
     fetch(updateEventURL, {
       method: "PUT",
       headers: {
@@ -72,7 +72,6 @@ const EventForm = ({ event }) => {
       },
       body: JSON.stringify(formData),
     });
-    console.log("fetched")
     triggerEventFetch(); // Trigger event refetch after form submission
   };
 
