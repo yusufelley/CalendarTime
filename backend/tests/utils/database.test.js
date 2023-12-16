@@ -1,7 +1,7 @@
 // database.test.js
 
 import mongoose from 'mongoose';
-import connectDB from '../../utils/database'; // Adjust the path to your database.js file
+import connectDB from '../../utils/database'; 
 
 // Mock mongoose's connect method
 jest.mock('mongoose', () => ({
@@ -49,7 +49,7 @@ describe('connectDB', () => {
   
     expect(mongoose.connect).toHaveBeenCalledWith(mockUri);
     // Check that console.error was called with the error message string
-    expect(consoleSpy).toHaveBeenCalledWith(mockError.message); // Adjusted this line
+    expect(consoleSpy).toHaveBeenCalledWith(mockError.message); 
     expect(processExitSpy).toHaveBeenCalledWith(1);
   });
 });

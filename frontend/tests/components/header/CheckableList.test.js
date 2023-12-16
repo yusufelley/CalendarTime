@@ -29,5 +29,5 @@ describe('CheckableList', () => {
     expect(firstCheckbox).not.toBeChecked();
   });
 
-  // Additional tests can be added here to cover other aspects of the component
+ 
 });

@@ -3,8 +3,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import CalendarEvent from '../../src/deprecated/CalendarEvent'; // Update with the correct path
-import CalendarItem from '../../src/deprecated/CalendarItem'; // Update with the correct path
+import CalendarEvent from '../../src/deprecated/CalendarEvent'; 
+import CalendarItem from '../../src/deprecated/CalendarItem'; 
 
 jest.mock('../../src/deprecated/CalendarItem', () => {
   return jest.fn(() => <div>Mocked CalendarItem</div>);
@@ -20,7 +20,7 @@ describe('CalendarEvent', () => {
         item: mockEvent,
         itemType: 'event'
       },
-      expect.anything() // This matches any other props (like `key`), which React might add
+      expect.anything()
     );
   });
 });

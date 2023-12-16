@@ -3,8 +3,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { EventProvider, useEventContext } from '../src/EventContext'; // Update with the correct path
-
+import { EventProvider, useEventContext } from '../src/EventContext'; 
 // Test component that uses the EventContext
 const TestComponent = () => {
   const { triggerFetch, triggerEventFetch, resetTriggerFetch } = useEventContext();

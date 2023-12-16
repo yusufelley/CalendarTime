@@ -30,11 +30,8 @@ describe('SmallCalendar', () => {
 
     // Verify that the state has updated to the new date
     // This assumes the state update would result in some observable change in the component,
-    // for example, displaying the selected date.
-    // Since the mocked Calendar doesn't show the date, this part of the test might need to be adjusted
-    // based on how the SmallCalendar component shows the selected date.
+
   });
 
-  // More tests here...
 });
 

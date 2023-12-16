@@ -1,6 +1,5 @@
 // logger.test.js
-
-import logger from '../../utils/logger'; // Adjust the path to your logger.js file
+import logger from '../../utils/logger';
 import winston from 'winston';
 
 jest.mock('winston', () => {
@@ -29,8 +28,6 @@ describe('logger', () => {
   it('should create a logger with correct configuration', () => {
     expect(winston.createLogger).toHaveBeenCalled();
     expect(winston.transports.Console).toHaveBeenCalled();
-    // Uncomment the next line if you want to test file transport
-    // expect(winston.transports.File).toHaveBeenCalledWith({ filename: 'app.log' });
   });
 
   it('should correctly format log messages', () => {
@@ -40,6 +37,6 @@ describe('logger', () => {
     logger.info('Test message');
 
     expect(logSpy).toHaveBeenCalled();
-    // Additional checks can be added here based on the specific format you expect
+
   });
 });

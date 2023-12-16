@@ -29,10 +29,9 @@ describe('WeeklyCalendarGrid', () => {
 
   it('displays events correctly', () => {
     render(<WeeklyCalendarGrid />);
-    // Example: Checking if an event for "Monday at 8" is displayed
+  
     const eventCell = screen.getByText('EVENT');
     expect(eventCell).toBeInTheDocument();
   });
 
-  // More tests can be added here to cover other aspects of the component
 });

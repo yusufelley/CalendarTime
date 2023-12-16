@@ -2,7 +2,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import PageDisplayer from '../../../src/pages/pageManagement/PageDisplayer'; // Adjust the path to your PageDisplayer.jsx file
+import PageDisplayer from '../../../src/pages/pageManagement/PageDisplayer'; 
 import WeekCalendarDep from '../../../src/pages/WeeklyCalendarPage/WeeklyCalendar';
 import Settings from '../../../src/pages/SettingsPage/Settings';
 import ToDoList from '../../../src/pages/ToDoListPage/ToDoList';

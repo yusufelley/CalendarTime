@@ -2,14 +2,14 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import ColorSelector from '../../../src/components/inputs/ColorSelector'; // Update with the correct path
+import ColorSelector from '../../../src/components/inputs/ColorSelector'; 
 
 
 describe('ColorSelector', () => {
  it('renders the correct number of color chips', () => {
    render(<ColorSelector handleChange={() => {}} />);
    const chips = screen.getAllByRole('button');
-   expect(chips.length).toBe(6); // 6 is the number of colors you have defined
+   expect(chips.length).toBe(6); 
  });
 
 
@@ -35,5 +35,4 @@ describe('ColorSelector', () => {
  });
 
 
- // Additional tests...
 });

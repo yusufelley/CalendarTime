@@ -2,9 +2,9 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import EventCardModal from '../../../../src/components/cards/EventCard/EventCardModal'; // Update with the correct path
-import EventForm from '../../../../src/components/forms/EventForm'; // Update with the correct path
-import { DeleteButton } from '../../../../src/components/buttons/DeleteButton/DeleteButton'; // Update with the correct path
+import EventCardModal from '../../../../src/components/cards/EventCard/EventCardModal'; 
+import EventForm from '../../../../src/components/forms/EventForm'; 
+import { DeleteButton } from '../../../../src/components/buttons/DeleteButton/DeleteButton'; 
 
 
 jest.mock('../../../../src/components/forms/EventForm', () => () => <div>Mocked EventForm</div>);
