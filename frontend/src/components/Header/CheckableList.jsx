@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
@@ -7,14 +7,12 @@ import ListItemText from "@mui/material/ListItemText";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Checkbox from "@mui/material/Checkbox";
+import { TaskContext } from "../../TaskContext";
 
 const CheckableList = () => {
   // State to manage checked items
-  const [tasks, setTasks] = useState([
-    { id: 1, text: "Buy groceries", completed: false },
-    { id: 2, text: "Call the doctor", completed: false },
-    { id: 3, text: "Finish React project", completed: false },
-  ]);
+  const { tasks, setTasks } = useContext(TaskContext);
+
   const [newTodo, setNewTodo] = useState("");
 
   const addTodo = (event) => {

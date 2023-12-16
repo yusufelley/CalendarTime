@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Modal, Box, Button } from "@mui/material";
 import TaskEventContainer from "../forms/TaskEventContainer.jsx";
 import Typography from "@mui/material/Typography";
 import CheckableList from "./CheckableList.jsx";
-
 import ArrowRight from "@material-ui/icons/ArrowForwardIos";
 import ArrowLeft from "@material-ui/icons/ArrowBackIos";
+import { TaskContext } from "../../TaskContext.jsx";
 
 const readMoreStyle = {
   position: "absolute",
@@ -23,6 +23,7 @@ const Header = ({ month, goToPreviousWeek, goToNextWeek }) => {
   // State to manage the Create Event/Task modal
 
   const [openCreate, setOpenCreate] = useState(false);
+  const { tasks } = useContext(TaskContext);
 
   const handleOpenCreate = () => setOpenCreate(true);
   const handleCloseCreate = () => setOpenCreate(false);
@@ -60,10 +61,10 @@ const Header = ({ month, goToPreviousWeek, goToNextWeek }) => {
           ></iconify-icon>
         </div>
         <div style={{ fontSize: "large" }}>
-          4 Tasks remaining for today
+          {`${tasks.length} Tasks remaining for today`}
           <br />
           <Button onClick={handleOpenRead} className="read-more">
-            {">"} Read More
+            {">"} Quick view tasks
           </Button>
           <Modal
             open={openRead}
