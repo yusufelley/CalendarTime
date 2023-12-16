@@ -3,7 +3,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import PageSelector from '../../../src/pages/pageManagement/PageSelector'; // Update with the correct path
+import PageSelector from '../../../src/pages/pageManagement/PageSelector';
 
 describe('PageSelector', () => {
   it('changes selected page on button click', () => {
@@ -18,5 +18,4 @@ describe('PageSelector', () => {
   });
   
 
-  // Additional tests...
 });

@@ -53,5 +53,4 @@ describe('WeekCalendarDep', () => {
     // Test if the events are fetched and rendered correctly
   });
 
-  // Additional tests can be added here to cover other aspects of the component
 });

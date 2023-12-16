@@ -1,8 +1,7 @@
 // Main.test.js
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from '../src/App'; // Update with the correct path to App.jsx
-
+import App from '../src/App';
 jest.mock('react-dom/client', () => ({
   createRoot: jest.fn(),
 }));
@@ -13,7 +12,7 @@ describe('Main', () => {
     div.id = 'root';
     document.body.appendChild(div);
 
-    require('../src/main'); // Update with the correct path to Main.jsx
+    require('../src/main'); 
 
     expect(ReactDOM.createRoot).toHaveBeenCalledWith(div);
     expect(ReactDOM.createRoot().render).toHaveBeenCalledWith(

@@ -23,8 +23,5 @@ describe('Settings', () => {
     expect(screen.getByText('Mocked Header')).toBeInTheDocument();
   });
 
-  // Add more tests here as needed
-  // For example, if your Settings component interacts with other components or has specific logic,
-  // you should add tests to ensure that these interactions and logic work as expected.
 });
 

@@ -4,9 +4,8 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import EventCard from '../../../../src/components/cards/EventCard/EventCard'; // Update with the correct path
-import EventCardModal from '../../../../src/components/cards/EventCard/EventCardModal'; // Update with the correct path
-
+import EventCard from '../../../../src/components/cards/EventCard/EventCard'; 
+import EventCardModal from '../../../../src/components/cards/EventCard/EventCardModal'; 
 
 jest.mock('../../../../src/components/cards/EventCard/EventCardModal', () => (props) => (
  props.open ? <div>Mocked EventCardModal</div> : null
@@ -38,5 +37,4 @@ describe('EventCard', () => {
  });
 
 
- // Additional tests...
 });

@@ -33,5 +33,4 @@ describe('DeleteButton', () => {
    });
 
 
- // Additional tests for other types and error handling...
 });

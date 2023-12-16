@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/27</span>
+                <span class='fraction'>18/27</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/5</span>
+                <span class='fraction'>4/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/27</span>
+                <span class='fraction'>18/27</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -170,8 +170,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -193,7 +193,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -209,17 +209,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Router } from "express";
 import Task from "../models/TaskSchema.js";
@@ -238,7 +238,7 @@ taskRouter.get("/", async (req, res) =&gt; {
 });
 &nbsp;
 // POST a new task
-taskRouter.post("/", <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
+taskRouter.post("/", async (req, res) =&gt; {
   const {
     name,
     deadline,
@@ -249,8 +249,8 @@ taskRouter.post("/", <span class="fstat-no" title="function not covered" >as</sp
     maxTimeBlock,
     canSplit,
     color,
-  } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-  const task = <span class="cstat-no" title="statement not covered" >new Task({</span>
+  } = req.body;
+  const task = new Task({
     name,
     deadline,
     startDate,
@@ -271,8 +271,8 @@ taskRouter.post("/", <span class="fstat-no" title="function not covered" >as</sp
 });
 &nbsp;
 // GET a single task by ID
-taskRouter.get("/:id", getTask, <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  res.json(res.task);</span>
+taskRouter.get("/:id", getTask, (req, res) =&gt; {
+  res.json(res.task);
 });
 &nbsp;
 // DELETE a task
@@ -286,19 +286,19 @@ taskRouter.delete("/:id", getTask, <span class="fstat-no" title="function not co
 });
 &nbsp;
 // Middleware to get a task object by ID
-export async function <span class="fstat-no" title="function not covered" >getTask(</span>req, res, next) {
+export async function getTask(req, res, next) {
   let task;
-<span class="cstat-no" title="statement not covered" >  try {</span>
-<span class="cstat-no" title="statement not covered" >    task = await Task.findById(req.params.id);</span>
-<span class="cstat-no" title="statement not covered" >    if (task == null) {</span>
-<span class="cstat-no" title="statement not covered" >      return res.status(404).json({ message: "Cannot find task" });</span>
+  try {
+    task = await Task.findById(req.params.id);
+    if (task == null) {
+      return res.status(404).json({ message: "Cannot find task" });
     }
   } catch (err) {
 <span class="cstat-no" title="statement not covered" >    return res.status(500).json({ message: err.message });</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  res.task = task;</span>
-<span class="cstat-no" title="statement not covered" >  next();</span>
+  res.task = task;
+  next();
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -307,7 +307,7 @@ export async function <span class="fstat-no" title="function not covered" >getTa
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-15T22:46:14.390Z
+                at 2023-12-16T03:01:59.584Z
             </div>
         <script src="../prettify.js"></script>
         <script>

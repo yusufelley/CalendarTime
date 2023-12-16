@@ -46,5 +46,5 @@ describe('Header', () => {
     expect(screen.getByText('Mocked TaskEventContainer')).toBeInTheDocument();
   });
 
-  // Additional tests can be added here to cover other aspects of the component
+
 });

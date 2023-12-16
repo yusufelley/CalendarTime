@@ -3,7 +3,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import CalendarItem from '../../src/deprecated/CalendarItem'; // Update with the correct path
+import CalendarItem from '../../src/deprecated/CalendarItem'; 
 
 describe('CalendarItem', () => {
   it('renders event details correctly', () => {
@@ -40,5 +40,4 @@ describe('CalendarItem', () => {
     expect(screen.getByText('Description: Test Task Description')).toBeInTheDocument();
   });
 
-  // Additional tests...
 });

@@ -13,5 +13,4 @@ describe('CustomDurationInput', () => {
  });
 
 
- // Additional tests for onChange functionality...
 });
