@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 
 const CheckableList = () => {
+  // State to manage checked items
   const [checkedItems, setCheckedItems] = useState([]);
+  // List of items
   const items = ["Take out trash", "Clean Room", "Study for Finals", "Relax"];
 
+  // Function to handle checkbox changes
   const handleCheckboxChange = (item) => {
     const isChecked = checkedItems.includes(item);
     if (isChecked) {
-      setCheckedItems(
-        checkedItems.filter((checkedItem) => checkedItem !== item)
-      );
+      // Remove item if already checked
+      setCheckedItems(checkedItems.filter((checkedItem) => checkedItem !== item));
     } else {
+      // Add item if not checked
       setCheckedItems([...checkedItems, item]);
     }
   };

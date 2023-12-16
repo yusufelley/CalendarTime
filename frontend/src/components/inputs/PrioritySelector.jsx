@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 
+// Allows user to select the priority of their events
 const PrioritySelector = ({ onSelect, disable, selectedPriority }) => {
   const [priority, setPriority] = useState(
     selectedPriority ? selectedPriority : ""

@@ -7,12 +7,12 @@ import {
   Checkbox,
   Button,
   Stack,
-  Chip,
 } from "@mui/material";
 import CustomDurationInput from "../inputs/CustomDurationInput.jsx";
 import ColorSelector from "../inputs/ColorSelector.jsx";
 
 const TaskForm = () => {
+  // State to manage form data
   const [formData, setFormData] = useState({
     name: "",
     deadline: "",
@@ -25,6 +25,7 @@ const TaskForm = () => {
     color: undefined,
   });
 
+  // Handle form input changes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prevData) => ({
@@ -33,6 +34,7 @@ const TaskForm = () => {
     }));
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     const createTaskURL = `${SERVER_URL}/task`;
@@ -47,10 +49,11 @@ const TaskForm = () => {
       .then((response) => response.json())
       .then((data) => console.log(`${createTaskURL} responded with`, data))
       .catch((err) =>
-        console.error(`An error has occured posting to ${createTaskURL}`, err)
+        console.error(`An error has occurred posting to ${createTaskURL}`, err)
       );
   };
 
+  // Handle incrementing estimated duration
   const handleIncrement = () => {
     setFormData((prevData) => ({
       ...prevData,
@@ -58,6 +61,7 @@ const TaskForm = () => {
     }));
   };
 
+  // Handle decrementing estimated duration
   const handleDecrement = () => {
     if (formData.duration <= 0) return;
     setFormData((prevData) => ({
@@ -166,7 +170,8 @@ const TaskForm = () => {
         justifyContent={"space-between"}
       >
         <ColorSelector handleChange={handleChange} />
-
+        
+        {/* Submit button */}
         <Button
           type="submit"
           variant="contained"
