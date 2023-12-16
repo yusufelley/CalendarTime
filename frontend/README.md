@@ -1,6 +1,6 @@
 # To Run Application
-
-npm i
+(In both front end and back end folders)
+npm i --force
 
 npm run dev
 
