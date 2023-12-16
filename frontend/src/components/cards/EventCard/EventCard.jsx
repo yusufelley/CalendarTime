@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Button, Box } from "@mui/material";
+import { Button, Box, Typography, Chip, Stack } from "@mui/material";
+import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
+
 import EventCardModal from "./EventCardModal.jsx";
 
 const EventCard = (event) => {
@@ -32,7 +34,26 @@ const EventCard = (event) => {
           fontSize: 10,
         }}
       >
-        {event.name}
+        <Stack>
+          {event.priority !== "low" && (
+            <Chip
+              icon={event.priority === "high" && <PriorityHighIcon />}
+              label={
+                event.priority === "high" ? "High Priority" : "Medium Priority"
+              }
+              sx={{
+                color: "white",
+                borderColor: "white",
+                "& .MuiChip-icon": { color: "white" },
+              }}
+              size="small"
+              variant="outlined"
+            />
+          )}
+          <Typography variant="subtitle1" component="div">
+            {event.name}
+          </Typography>
+        </Stack>
       </Button>
       <EventCardModal open={open} onClose={handleClose} event={event} />
     </Box>

@@ -33,6 +33,10 @@ const eventSchema = new mongoose.Schema({
     type: String,
     default: "#F1C40F", // Default to yellow color
   },
+  priority: {
+    type: String,
+    default: "low",
+  },
 });
 
 const Event = mongoose.model("Event", eventSchema);
