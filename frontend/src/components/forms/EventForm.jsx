@@ -14,6 +14,8 @@ import moment from "moment";
 import { useEventContext } from "../../EventContext.jsx";
 import PrioritySelector from "../inputs/PrioritySelector.jsx";
 
+// Event form is used to display event information or create an event
+// if Event form is passed an event it will be used to display event information
 const EventForm = ({ event }) => {
   const [disable, setDisable] = useState(event ? true : false);
 
@@ -72,7 +74,7 @@ const EventForm = ({ event }) => {
       },
       body: JSON.stringify(formData),
     });
-    console.log("fetched")
+    console.log("fetched");
     triggerEventFetch(); // Trigger event refetch after form submission
   };
 

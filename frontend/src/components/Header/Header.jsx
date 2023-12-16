@@ -19,9 +19,8 @@ const readMoreStyle = {
   p: 4,
 };
 
+// Header for the application that displays month and cycling through the calendar
 const Header = ({ month, goToPreviousWeek, goToNextWeek }) => {
-  // State to manage the Create Event/Task modal
-
   const [openCreate, setOpenCreate] = useState(false);
   const { tasks } = useContext(TaskContext);
 

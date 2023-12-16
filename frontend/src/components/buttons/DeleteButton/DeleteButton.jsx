@@ -2,7 +2,9 @@ import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { SERVER_URL } from "../../../config/config.js";
 
+// Reusable Delete Button to delete events and tasks
 export const DeleteButton = ({ type, id, closeModal }) => {
+  // Creates the appropriate url based on type of delete button
   const generateURL = () => {
     let url = `${SERVER_URL}/${type}/${id}`;
     if (type == "course") {
@@ -19,6 +21,7 @@ export const DeleteButton = ({ type, id, closeModal }) => {
     return url;
   };
 
+  // handler for deleting
   const handleDelete = () => {
     const url = generateURL();
     console.log(`Attempting to delete ${type} with id (${id}) at ${url}`);

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 
+// custom select input component to select priority
 const PrioritySelector = ({ onSelect, disable, selectedPriority }) => {
   const [priority, setPriority] = useState(
     selectedPriority ? selectedPriority : ""

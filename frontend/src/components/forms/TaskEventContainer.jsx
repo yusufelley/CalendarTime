@@ -3,8 +3,9 @@ import { Box, Button, ButtonGroup, Typography } from "@mui/material";
 import TaskForm from "./TaskForm";
 import EventForm from "./EventForm";
 
+// Container to host Task and Event forms
 const TaskEventContainer = () => {
-  const [isEvent, setIsEvent] = useState(false);
+  const [isEvent, setIsEvent] = useState(true);
 
   return (
     <Box

@@ -9,10 +9,9 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Checkbox from "@mui/material/Checkbox";
 import { TaskContext } from "../../TaskContext";
 
+// checkable list for to-do list
 const CheckableList = () => {
-  // State to manage checked items
   const { tasks, setTasks } = useContext(TaskContext);
-
   const [newTodo, setNewTodo] = useState("");
 
   const addTodo = (event) => {

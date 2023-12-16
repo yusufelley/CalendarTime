@@ -12,6 +12,7 @@ import {
 import CustomDurationInput from "../inputs/CustomDurationInput.jsx";
 import ColorSelector from "../inputs/ColorSelector.jsx";
 
+// Task form for submitting tasks to backend
 const TaskForm = () => {
   const [formData, setFormData] = useState({
     name: "",

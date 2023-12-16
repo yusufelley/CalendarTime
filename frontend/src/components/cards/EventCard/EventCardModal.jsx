@@ -1,8 +1,9 @@
-import React from 'react';
+import React from "react";
 import { Modal, Box } from "@mui/material";
 import { DeleteButton } from "../../buttons/DeleteButton/DeleteButton.jsx";
 import EventForm from "../../forms/EventForm.jsx";
 
+// Popup modal to view event information
 const EventCardModal = ({ open, onClose, event }) => {
   const style = {
     position: "absolute",

@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Stack, Chip } from "@mui/material";
 
+// color selector to select colors for events and tasks
 const ColorSelector = ({ handleChange, disable, color }) => {
   const [selectedColor, setSelectedColor] = useState(color);
 

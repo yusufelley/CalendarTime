@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
 import { useState } from "react";
 import { Button, Box, Typography, Chip, Stack } from "@mui/material";
 import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
 
 import EventCardModal from "./EventCardModal.jsx";
 
+// Reusable event card component
 const EventCard = (event) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
