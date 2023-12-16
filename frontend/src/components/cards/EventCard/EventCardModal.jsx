@@ -1,3 +1,4 @@
+import React from 'react';
 import { Modal, Box } from "@mui/material";
 import { DeleteButton } from "../../buttons/DeleteButton/DeleteButton.jsx";
 import EventForm from "../../forms/EventForm.jsx";
