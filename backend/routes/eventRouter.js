@@ -25,6 +25,7 @@ eventRouter.post("/", async (req, res) => {
     location,
     description,
     color,
+    priority,
   } = req.body;
   const event = new Event({
     name,
@@ -35,6 +36,7 @@ eventRouter.post("/", async (req, res) => {
     location,
     description,
     color,
+    priority,
   });
 
   try {

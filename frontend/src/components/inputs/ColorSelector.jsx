@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Stack, Chip } from "@mui/material";
 
-const ColorSelector = ({ handleChange, disable }) => {
-  const [selectedColor, setSelectedColor] = useState(undefined);
+const ColorSelector = ({ handleChange, disable, color }) => {
+  const [selectedColor, setSelectedColor] = useState(color);
 
   const colors = [
     "#27AE60",
