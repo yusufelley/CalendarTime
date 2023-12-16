@@ -19,7 +19,7 @@ const readMoreStyle = {
   p: 4,
 };
 
-const Header = ({ goToPreviousWeek, goToNextWeek }) => {
+const Header = ({ month, goToPreviousWeek, goToNextWeek }) => {
   const [openCreate, setOpenCreate] = useState(false);
 
   const handleOpenCreate = () => setOpenCreate(true);
@@ -30,7 +30,7 @@ const Header = ({ goToPreviousWeek, goToNextWeek }) => {
 
   return (
     <div className="header">
-      CalendarTime
+      {month}
       <div className="toggle-container">
         <button
           className="toggle"
