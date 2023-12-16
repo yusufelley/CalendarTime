@@ -1,9 +1,14 @@
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { SERVER_URL } from "../../../config/config.js";
+import { useEventContext } from "../../../EventContext";
+
 
 // Reusable Delete Button to delete events and tasks
 export const DeleteButton = ({ type, id, closeModal }) => {
+
+  const { triggerEventFetch } = useEventContext();
+
   // Creates the appropriate url based on type of delete button
   const generateURL = () => {
     let url = `${SERVER_URL}/${type}/${id}`;
@@ -33,6 +38,7 @@ export const DeleteButton = ({ type, id, closeModal }) => {
     })
       .then(() => closeModal())
       .catch((err) => console.error(`ERROR: deleting ${type} with id (${id})`));
+      triggerEventFetch(); // Trigger event refetch after form submission
   };
 
   return (
